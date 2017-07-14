@@ -60,6 +60,207 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-force-rotation-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/force-rotation-0/" class="article-date">
+  <time datetime="2017-07-14T08:50:41.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/force-rotation-0/">force_rotation_0</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight patch"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">diff --git a/services/core/java/com/android/server/wm/WindowManagerService.java b/services/core/java/com/android/server/wm/WindowManagerService.java</div><div class="line">index 35de1fa..17540f5 100755</div><div class="line"><span class="comment">--- a/services/core/java/com/android/server/wm/WindowManagerService.java</span></div><div class="line"><span class="comment">+++ b/services/core/java/com/android/server/wm/WindowManagerService.java</span></div><div class="line">@@ -8586,6 +8586,10 @@ public class WindowManagerService extends IWindowManager.Stub</div><div class="line">                if(mCurConfiguration.enableMultiWindow())&#123;</div><div class="line">                rotation = Surface.ROTATION_0;</div><div class="line">                &#125;</div><div class="line"><span class="addition">+       //add by a_bin</span></div><div class="line"><span class="addition">+               if(SystemProperties.getBoolean("ro.xxx.xxx",false))&#123;</span></div><div class="line"><span class="addition">+                       rotation = Surface.ROTATION_0;</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line">         if (mRotation == rotation &amp;&amp; mAltOrientation == altOrientation) &#123;</div><div class="line">             // No change.</div><div class="line">             return false;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/force-rotation-0/" data-id="cj53mka5a000gbuuyftxtgy1r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-set-default-font-size-large" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/set-default-font-size-large/" class="article-date">
+  <time datetime="2017-07-14T08:48:47.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/set-default-font-size-large/">设置默认字体为大号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight patch"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.java</div><div class="line">index 1266e4d..8050c73 100755</div><div class="line"><span class="comment">--- a/core/java/android/content/res/Configuration.java</span></div><div class="line"><span class="comment">+++ b/core/java/android/content/res/Configuration.java</span></div><div class="line">@@ -838,7 +838,13 @@ public final class Configuration implements Parcelable, Comparable&lt;Configuration</div><div class="line">        multiwindowflag = UNDEFINE_MULTI_WINDOW;</div><div class="line">        dualscreenflag = UNDEFINE_DUAL_SCREEN;//UNDEFINE_DUAL_SCREEN;</div><div class="line">        phoneMode = 0;</div><div class="line"><span class="deletion">-        fontScale = 1;</span></div><div class="line"><span class="addition">+       //add by a_bin for def large font size</span></div><div class="line"><span class="addition">+               if(SystemProperties.getBoolean("ro.xxx.xxx",true))&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1.3f;</span></div><div class="line"><span class="addition">+               &#125;else&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1;</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line"><span class="addition">+        //fontScale = 1;</span></div><div class="line">         mcc = mnc = 0;</div><div class="line">         locale = null;</div><div class="line">         userSetLocale = false;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/set-default-font-size-large/" data-id="cj53mka5x000xbuuytuhal9ny" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-default-time-zone-lang" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/default-time-zone-lang/" class="article-date">
+  <time datetime="2017-07-14T08:44:33.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/default-time-zone-lang/">默认时区和语言设置为中国</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight patch"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">diff --git a/system.prop b/system.prop</div><div class="line">index bc09cd4..ac6f131 100644</div><div class="line"><span class="comment">--- a/system.prop</span></div><div class="line"><span class="comment">+++ b/system.prop</span></div><div class="line">@@ -36,7 +36,6 @@ ro.rk.LowBatteryBrightness=false</div><div class="line"> ro.tether.denied=false</div><div class="line"> sys.resolution.changed=false</div><div class="line"> ro.default.size=100</div><div class="line"><span class="deletion">-persist.sys.timezone=</span></div><div class="line"> ro.product.usbfactory=rockchip_usb</div><div class="line"> wifi.supplicant_scan_interval=15</div><div class="line"> ro.factory.tool=0</div><div class="line">@@ -53,3 +52,8 @@ ro.zwqx.getRtcFromDriver=true</div><div class="line"></div><div class="line"> # set def font size to large</div><div class="line"> ro.zwqx.def_fs_large=true</div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+# set timezone &amp; language to china</span></div><div class="line"><span class="addition">+persist.sys.timezone=Asia/Shanghai</span></div><div class="line"><span class="addition">+persist.sys.country=CN</span></div><div class="line"><span class="addition">+persist.sys.language=zh</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/default-time-zone-lang/" data-id="cj53mka500007buuyl3jg08uf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-open-app-in-launcher" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/open-app-in-launcher/" class="article-date">
+  <time datetime="2017-07-14T08:36:59.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/open-app-in-launcher/">在Launcher里面打开指定的app</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">diff --git a/src/com/android/launcher3/Launcher.java b/src/com/android/launcher3/Launcher.java</div><div class="line">index 3d0ccea..dd040a3 100755</div><div class="line"><span class="comment">--- a/src/com/android/launcher3/Launcher.java</span></div><div class="line"><span class="comment">+++ b/src/com/android/launcher3/Launcher.java</span></div><div class="line">@@ -45,6 +45,7 @@ import android.content.IntentFilter;</div><div class="line"> import android.content.SharedPreferences;</div><div class="line"> import android.content.pm.ActivityInfo;</div><div class="line"> import android.content.pm.ApplicationInfo;</div><div class="line"><span class="addition">+import android.content.pm.PackageInfo;</span></div><div class="line"> import android.content.pm.PackageManager;</div><div class="line"> import android.content.pm.PackageManager.NameNotFoundException;</div><div class="line"> import android.content.res.Configuration;</div><div class="line">@@ -516,6 +517,7 @@ public class Launcher extends Activity</div><div class="line">         &#125; else &#123;</div><div class="line">             showFirstRunActivity();</div><div class="line">             showFirstRunClings();</div><div class="line"><span class="addition">+           showCLKActivity();//add by a_bin</span></div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">@@ -5020,6 +5022,25 @@ public class Launcher extends Activity</div><div class="line">         return false;</div><div class="line">     &#125;</div><div class="line"></div><div class="line"><span class="addition">+    //add by a_bin for open d06 app at first time</span></div><div class="line"><span class="addition">+    private String mCLKPackage = "com.clk.aeed06";</span></div><div class="line"><span class="addition">+    private void showCLKActivity()&#123;</span></div><div class="line"><span class="addition">+       try&#123;</span></div><div class="line"><span class="addition">+               if(isAppInstalled(mCLKPackage))&#123;</span></div><div class="line"><span class="addition">+                       Intent firstRunIntent = getPackageManager().getLaunchIntentForPackage(mCLKPackage);</span></div><div class="line"><span class="addition">+                       if(firstRunIntent != null)</span></div><div class="line"><span class="addition">+                               startActivity(firstRunIntent);</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line"><span class="addition">+       &#125;catch(Exception e)&#123;</span></div><div class="line"><span class="addition">+               e.printStackTrace();</span></div><div class="line"><span class="addition">+       &#125;</span></div><div class="line"><span class="addition">+    &#125;</span></div><div class="line"><span class="addition">+    private boolean isAppInstalled(String pkgName) throws PackageManager.NameNotFoundException &#123;</span></div><div class="line"><span class="addition">+        PackageInfo info = getPackageManager().getPackageInfo(pkgName,PackageManager.GET_ACTIVITIES);</span></div><div class="line"><span class="addition">+        return info != null;</span></div><div class="line"><span class="addition">+    &#125;</span></div><div class="line"><span class="addition">+    //add end</span></div><div class="line"><span class="addition">+</span></div><div class="line">     private void markFirstRunActivityShown() &#123;</div><div class="line">         SharedPreferences.Editor editor = mSharedPrefs.edit();</div><div class="line">         editor.putBoolean(FIRST_RUN_ACTIVITY_DISPLAYED, true);</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/open-app-in-launcher/" data-id="cj53mka5w000vbuuy7evx7q1j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ddr-gpu-cpu-freq" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/ddr-gpu-cpu-freq/" class="article-date">
+  <time datetime="2017-07-14T08:30:37.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/ddr-gpu-cpu-freq/">添加DDR、GPU、CPU的频率显示到SYSTEMUI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="需要驱动支持才行"><a href="#需要驱动支持才行" class="headerlink" title="需要驱动支持才行"></a>需要驱动支持才行</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">diff --git a/packages/SystemUI/src/com/android/systemui/LoadAverageService.java b/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index 59ffe03..e72c487</div><div class="line"><span class="comment">--- a/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</span></div><div class="line"><span class="comment">+++ b/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</span></div><div class="line">@@ -28,16 +28,23 @@ import android.os.Message;</div><div class="line"> import android.view.Gravity;</div><div class="line"> import android.view.View;</div><div class="line"> import android.view.WindowManager;</div><div class="line"><span class="addition">+import android.util.Log;</span></div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+import java.io.FileInputStream;</span></div><div class="line"><span class="addition">+import java.io.File;</span></div><div class="line"></div><div class="line"> import com.android.internal.os.ProcessCpuTracker;</div><div class="line"></div><div class="line"> public class LoadAverageService extends Service &#123;</div><div class="line"><span class="addition">+       private static final boolean DBG = false;</span></div><div class="line"><span class="addition">+       private static final String TAG = "LoadAverageService";</span></div><div class="line">     private View mView;</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="addition">+       private static final String PATH = "/proc/clk_debug_ctr/clk_debug";</span></div><div class="line"><span class="addition">+</span></div><div class="line">     private static final class CpuTracker extends ProcessCpuTracker &#123;</div><div class="line">         String mLoadText;</div><div class="line">         int mLoadWidth;</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="addition">+               byte[] data = new byte[64];</span></div><div class="line">         private final Paint mPaint;</div><div class="line"></div><div class="line">         CpuTracker(Paint paint) &#123;</div><div class="line">@@ -47,14 +54,37 @@ public class LoadAverageService extends Service &#123;</div><div class="line"></div><div class="line">         @Override</div><div class="line">         public void onLoadChanged(float load1, float load5, float load15) &#123;</div><div class="line"><span class="deletion">-            mLoadText = load1 + " / " + load5 + " / " + load15;</span></div><div class="line"><span class="addition">+               mLoadText = readUseage()+"\n";</span></div><div class="line"><span class="addition">+            mLoadText += load1 + " / " + load5 + " / " + load15;</span></div><div class="line">             mLoadWidth = (int)mPaint.measureText(mLoadText);</div><div class="line"><span class="addition">+                       if(DBG)Log.d(TAG,"a_bin===============&gt;&gt;mLoadText:"+mLoadText);</span></div><div class="line">         &#125;</div><div class="line"></div><div class="line">         @Override</div><div class="line">         public int onMeasureProcessName(String name) &#123;</div><div class="line">             return (int)mPaint.measureText(name);</div><div class="line">         &#125;</div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+               private String readUseage()&#123;</span></div><div class="line"><span class="addition">+                       try&#123;</span></div><div class="line"><span class="addition">+                               FileInputStream inputStream = new FileInputStream(new File(PATH));</span></div><div class="line"><span class="addition">+                               int len = inputStream.read(data);</span></div><div class="line"><span class="addition">+                               if(len &gt; 0)&#123;</span></div><div class="line"><span class="addition">+                                       String ret = new String(data,0,len);</span></div><div class="line"><span class="addition">+                                       String[] strs = ret.split(":");</span></div><div class="line"><span class="addition">+                                       String ddr = strs[1].substring(0,6);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"ddr:"+ddr);</span></div><div class="line"><span class="addition">+                                       String gpu = strs[2].substring(0,6);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"gpu:"+gpu);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"cpu:"+strs[3]);</span></div><div class="line"><span class="addition">+                                       return ddr +"/"+ Integer.valueOf(gpu)+"/"+Integer.valueOf(strs[3]);</span></div><div class="line"><span class="addition">+                               &#125;</span></div><div class="line"><span class="addition">+                       &#125;catch(Exception e)&#123;</span></div><div class="line"><span class="addition">+                               e.printStackTrace();</span></div><div class="line"><span class="addition">+                               return "";</span></div><div class="line"><span class="addition">+                       &#125;</span></div><div class="line"><span class="addition">+                       return "";</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line">     &#125;</div><div class="line"></div><div class="line">     private class LoadView extends View &#123;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/ddr-gpu-cpu-freq/" data-id="cj53mka4r0003buuyo2w0sptg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hdmi-and-laba-sound" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/14/hdmi-and-laba-sound/" class="article-date">
@@ -90,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/hdmi-and-laba-sound/" data-id="cj53b4vav0004ytuyfw8tnhcc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/hdmi-and-laba-sound/" data-id="cj53mka59000ebuuyfbkxi6wx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/disable-lock-screen/" data-id="cj53b4vb40007ytuy5yt0denh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/disable-lock-screen/" data-id="cj53mka510009buuyeu1mt9kt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/screen-red-view/" data-id="cj53b4vbg000gytuyk4itb2w7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/screen-red-view/" data-id="cj53mka5g000mbuuyu2w5gxzp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/mount-ntfs-sdcard/" data-id="cj53b4vbf000eytuygjorfxhb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/mount-ntfs-sdcard/" data-id="cj53mka5b000ibuuy327ly0w4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,212 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/add-new-setting-to-Settings/" data-id="cj53b4vap0001ytuyqqhelkgp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-always-show-soft-keyboard" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/always-show-soft-keyboard/" class="article-date">
-  <time datetime="2017-07-14T01:41:54.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/always-show-soft-keyboard/">外接键盘插入后还能显示软键盘</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>frameworks/native/services/inputflinger/EventHub.cpp</code></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@@ <span class="number">-1051</span>,<span class="number">6</span> +<span class="number">1051</span>,<span class="number">13</span> @@ <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int32_t</span> GAMEPAD_KEYCODES[] = &#123;</div><div class="line"> <span class="keyword">status_t</span> EventHub::openDeviceLocked(<span class="keyword">const</span> <span class="keyword">char</span> *devicePath) &#123;</div><div class="line">     <span class="keyword">char</span> buffer[<span class="number">80</span>];</div><div class="line"> </div><div class="line">+    <span class="comment">//add by yangbin for always show soft keyboard when hard keyboard insert</span></div><div class="line">+    <span class="keyword">char</span> prop_value[PROPERTY_VALUE_MAX];</div><div class="line">+    <span class="keyword">int</span> always_show_sf_input;</div><div class="line">+    property_get(<span class="string">"ro.clk.always_sf_input"</span>, prop_value, <span class="string">"0"</span>);</div><div class="line">+    always_show_sf_input = atoi(prop_value);</div><div class="line">+    <span class="comment">//add end</span></div><div class="line">+</div><div class="line">     ALOGV(<span class="string">"Opening device: %s"</span>, devicePath);</div><div class="line"> </div><div class="line">     <span class="keyword">int</span> fd = open(devicePath, O_RDWR | O_CLOEXEC);</div><div class="line">@@ <span class="number">-1275</span>,<span class="number">6</span> +<span class="number">1282</span>,<span class="number">11</span> @@ <span class="keyword">status_t</span> EventHub::openDeviceLocked(<span class="keyword">const</span> <span class="keyword">char</span> *devicePath) &#123;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> </div><div class="line">+    <span class="comment">//add by yangbin for always show soft keyboard</span></div><div class="line">+    ALOGD(<span class="string">"yangbin====&gt;always_show_sf_input:%d"</span>,always_show_sf_input);</div><div class="line">+    <span class="keyword">if</span>(always_show_sf_input == <span class="number">1</span>)</div><div class="line">+    	device-&gt;classes &amp;= <span class="number">0xFFFF</span> &amp; ~INPUT_DEVICE_CLASS_ALPHAKEY;</div><div class="line">+</div><div class="line">     <span class="comment">// If the device isn't recognized as something we handle, don't monitor it.</span></div><div class="line">     <span class="keyword">if</span> (device-&gt;classes == <span class="number">0</span>) &#123;</div><div class="line">         ALOGV(<span class="string">"Dropping device: id=%d, path='%s', name='%s'"</span>,</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-show-soft-keyboard/" data-id="cj53b4vaz0005ytuymsfunl6k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nav-bar-half-height" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/nav-bar-half-height/" class="article-date">
-  <time datetime="2017-07-14T01:39:17.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/nav-bar-half-height/">导航栏高度减小一半</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>framework/base/core/res/res/values/dimens.xml</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"navigation_bar_height"</span>&gt;</span>24dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"navigation_bar_height_landscape"</span>&gt;</span>24dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj53b4vbc000cytuyavglz04d" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-open-sms" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/open-sms/" class="article-date">
-  <time datetime="2017-07-14T01:33:07.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/open-sms/">打开短信功能</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>device/rockchip/common/overlay/frameworks/base/core/res/res/values/config.xml</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bool</span> <span class="attr">name</span>=<span class="string">"config_sms_capable"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bool</span>&gt;</span></div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/open-sms/" data-id="cj53b4vbi000iytuyfqp4j400" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-always-connect-wifi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/always-connect-wifi/" class="article-date">
-  <time datetime="2017-07-14T01:29:48.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/always-connect-wifi/">当以太网连接后Wi-Fi仍可连接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>frameworks/opt/net/wifi/service/java/com/android/server/wifi/WifiStateMachine.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setScanResults</span><span class="params">()</span> </span>&#123;</div><div class="line">	...</div><div class="line">	<span class="keyword">if</span> (getCurrentState() == mRoamingState</div><div class="line">                || getCurrentState() == mObtainingIpState</div><div class="line">                || getCurrentState() == mScanModeState</div><div class="line">                || getCurrentState() == mDisconnectingState</div><div class="line">                || (getCurrentState() == mConnectedState</div><div class="line">                &amp;&amp; !mWifiConfigStore.enableAutoJoinWhenAssociated)</div><div class="line">                || linkDebouncing</div><div class="line">                || state == SupplicantState.ASSOCIATING</div><div class="line">                || state == SupplicantState.AUTHENTICATING</div><div class="line">                || state == SupplicantState.FOUR_WAY_HANDSHAKE</div><div class="line">                || state == SupplicantState.GROUP_HANDSHAKE</div><div class="line">                || (<span class="comment">/* keep autojoin enabled if user has manually selected a wifi network,</span></div><div class="line">                        so as to make sure we reliably remain connected to this network */</div><div class="line">                        mConnectionRequests == <span class="number">0</span> &amp;&amp; selection == <span class="keyword">null</span>)) &#123;</div><div class="line">            <span class="comment">// Dont attempt auto-joining again while we are already attempting to join</span></div><div class="line">            <span class="comment">// and/or obtaining Ip address</span></div><div class="line">            attemptAutoJoin = <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="comment">//add by a_bin for blzn network</span></div><div class="line">    <span class="keyword">if</span>(SystemProperties.getBoolean(<span class="string">"ro.xxx.xxx"</span>,<span class="keyword">false</span>))&#123;</div><div class="line">            attemptAutoJoin = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-connect-wifi/" data-id="cj53b4vau0003ytuy663eh62s" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-always-connect-mobile-network" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/13/always-connect-mobile-network/" class="article-date">
-  <time datetime="2017-07-13T13:59:14.000Z" itemprop="datePublished">2017-07-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/13/always-connect-mobile-network/">当Wi-Fi或者以太网连接之后4G仍然可以连接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>frameworks/opt/telephony/src/java/com/android/internal/telephony/dataconnection/DcTracker.java</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">private void setupDataOnConnectableApns(String reason, RetryFailures retryFailures) &#123;</div><div class="line">	...</div><div class="line">	for (ApnContext apnContext : mPrioritySortedApnContexts) &#123;</div><div class="line">            if (DBG) log(&quot;setupDataOnConnectableApns: apnContext &quot; + apnContext);</div><div class="line">            if (apnContext.getState() == DctConstants.State.FAILED) &#123;</div><div class="line">                if (retryFailures == RetryFailures.ALWAYS) &#123;</div><div class="line">                    apnContext.setState(DctConstants.State.IDLE);</div><div class="line">                &#125; else if (apnContext.isConcurrentVoiceAndDataAllowed() == false &amp;&amp;</div><div class="line">                         mPhone.getServiceStateTracker().isConcurrentVoiceAndDataAllowed()) &#123;</div><div class="line">                    // RetryFailures.ONLY_ON_CHANGE - check if voice concurrency has changed</div><div class="line">                    apnContext.setState(DctConstants.State.IDLE);</div><div class="line">                &#125; else &#123;</div><div class="line">                    // RetryFailures.ONLY_ON_CHANGE - check if the apns have changed</div><div class="line">                    int radioTech = mPhone.getServiceState().getRilDataRadioTechnology();</div><div class="line">                    ArrayList&lt;ApnSetting&gt; originalApns = apnContext.getOriginalWaitingApns();</div><div class="line">                    if (originalApns != null &amp;&amp; originalApns.isEmpty() == false) &#123;</div><div class="line">                        waitingApns = buildWaitingApns(apnContext.getApnType(), radioTech);</div><div class="line">                        if (originalApns.size() != waitingApns.size() ||</div><div class="line">                                originalApns.containsAll(waitingApns) == false) &#123;</div><div class="line">                            apnContext.setState(DctConstants.State.IDLE);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">                //add by a_bin for blzn network</div><div class="line">                if(SystemProperties.getBoolean(&quot;ro.xxx.xxx&quot;, false))&#123;</div><div class="line">                        //Log.d(LOG_TAG,&quot;setupDataOnConnectableApns===apnContext.getApnType===&gt;&gt;&gt;&quot;+apnContext.getApnType());</div><div class="line">                        if(apnContext.getApnType().equals(&quot;default&quot;))&#123;</div><div class="line">                                //Log.d(LOG_TAG,&quot;setupDataOnConnectableApns===setEnabled true===&gt;&gt;&gt;&quot;);</div><div class="line">                                apnContext.setEnabled(true);</div><div class="line">                        &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            if (apnContext.isConnectable()) &#123;</div><div class="line">                log(&quot;setupDataOnConnectableApns: isConnectable() call trySetupData&quot;);</div><div class="line">                apnContext.setReason(reason);</div><div class="line">                trySetupData(apnContext, waitingApns);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/always-connect-mobile-network/" data-id="cj53b4val0000ytuyoha3bo7p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/add-new-setting-to-Settings/" data-id="cj53mka4u0004buuyvdsz7fcj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -510,23 +506,23 @@
       <ul>
         
           <li>
-            <a href="/2017/07/14/hdmi-and-laba-sound/">MID包HDMI和喇叭都有声音</a>
+            <a href="/2017/07/14/force-rotation-0/">force_rotation_0</a>
           </li>
         
           <li>
-            <a href="/2017/07/14/disable-lock-screen/">不显示锁屏界面</a>
+            <a href="/2017/07/14/set-default-font-size-large/">设置默认字体为大号</a>
           </li>
         
           <li>
-            <a href="/2017/07/14/screen-red-view/">屏幕红边</a>
+            <a href="/2017/07/14/default-time-zone-lang/">默认时区和语言设置为中国</a>
           </li>
         
           <li>
-            <a href="/2017/07/14/mount-ntfs-sdcard/">SD卡挂载成NTFS</a>
+            <a href="/2017/07/14/open-app-in-launcher/">在Launcher里面打开指定的app</a>
           </li>
         
           <li>
-            <a href="/2017/07/14/add-new-setting-to-Settings/">在设置里面添加一个新的设置项</a>
+            <a href="/2017/07/14/ddr-gpu-cpu-freq/">添加DDR、GPU、CPU的频率显示到SYSTEMUI</a>
           </li>
         
       </ul>

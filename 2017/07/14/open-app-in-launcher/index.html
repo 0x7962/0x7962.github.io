@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在Launcher里面打开指定的app | a_bin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546diff --git a/src/com/android/launcher3/Launcher.java b/src/com/android/launcher3/Launcher.javaindex 3d0ccea..dd040a3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Launcher里面打开指定的app">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/open-app-in-launcher/index.html">
+<meta property="og:site_name" content="a_bin&#39;s blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546diff --git a/src/com/android/launcher3/Launcher.java b/src/com/android/launcher3/Launcher.javaindex 3d0ccea..dd040a3">
+<meta property="og:updated_time" content="2017-07-14T08:37:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Launcher里面打开指定的app">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546diff --git a/src/com/android/launcher3/Launcher.java b/src/com/android/launcher3/Launcher.javaindex 3d0ccea..dd040a3">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">a_bin&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <!--
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      -->
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-open-app-in-launcher" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/open-app-in-launcher/" class="article-date">
+  <time datetime="2017-07-14T08:36:59.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在Launcher里面打开指定的app
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">diff --git a/src/com/android/launcher3/Launcher.java b/src/com/android/launcher3/Launcher.java</div><div class="line">index 3d0ccea..dd040a3 100755</div><div class="line"><span class="comment">--- a/src/com/android/launcher3/Launcher.java</span></div><div class="line"><span class="comment">+++ b/src/com/android/launcher3/Launcher.java</span></div><div class="line">@@ -45,6 +45,7 @@ import android.content.IntentFilter;</div><div class="line"> import android.content.SharedPreferences;</div><div class="line"> import android.content.pm.ActivityInfo;</div><div class="line"> import android.content.pm.ApplicationInfo;</div><div class="line"><span class="addition">+import android.content.pm.PackageInfo;</span></div><div class="line"> import android.content.pm.PackageManager;</div><div class="line"> import android.content.pm.PackageManager.NameNotFoundException;</div><div class="line"> import android.content.res.Configuration;</div><div class="line">@@ -516,6 +517,7 @@ public class Launcher extends Activity</div><div class="line">         &#125; else &#123;</div><div class="line">             showFirstRunActivity();</div><div class="line">             showFirstRunClings();</div><div class="line"><span class="addition">+           showCLKActivity();//add by a_bin</span></div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">@@ -5020,6 +5022,25 @@ public class Launcher extends Activity</div><div class="line">         return false;</div><div class="line">     &#125;</div><div class="line"></div><div class="line"><span class="addition">+    //add by a_bin for open d06 app at first time</span></div><div class="line"><span class="addition">+    private String mCLKPackage = "com.clk.aeed06";</span></div><div class="line"><span class="addition">+    private void showCLKActivity()&#123;</span></div><div class="line"><span class="addition">+       try&#123;</span></div><div class="line"><span class="addition">+               if(isAppInstalled(mCLKPackage))&#123;</span></div><div class="line"><span class="addition">+                       Intent firstRunIntent = getPackageManager().getLaunchIntentForPackage(mCLKPackage);</span></div><div class="line"><span class="addition">+                       if(firstRunIntent != null)</span></div><div class="line"><span class="addition">+                               startActivity(firstRunIntent);</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line"><span class="addition">+       &#125;catch(Exception e)&#123;</span></div><div class="line"><span class="addition">+               e.printStackTrace();</span></div><div class="line"><span class="addition">+       &#125;</span></div><div class="line"><span class="addition">+    &#125;</span></div><div class="line"><span class="addition">+    private boolean isAppInstalled(String pkgName) throws PackageManager.NameNotFoundException &#123;</span></div><div class="line"><span class="addition">+        PackageInfo info = getPackageManager().getPackageInfo(pkgName,PackageManager.GET_ACTIVITIES);</span></div><div class="line"><span class="addition">+        return info != null;</span></div><div class="line"><span class="addition">+    &#125;</span></div><div class="line"><span class="addition">+    //add end</span></div><div class="line"><span class="addition">+</span></div><div class="line">     private void markFirstRunActivityShown() &#123;</div><div class="line">         SharedPreferences.Editor editor = mSharedPrefs.edit();</div><div class="line">         editor.putBoolean(FIRST_RUN_ACTIVITY_DISPLAYED, true);</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/open-app-in-launcher/" data-id="cj53mka5w000vbuuy7evx7q1j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/14/default-time-zone-lang/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          默认时区和语言设置为中国
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/14/ddr-gpu-cpu-freq/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">添加DDR、GPU、CPU的频率显示到SYSTEMUI</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3288-5-1-1/">3288_5.1.1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/14/force-rotation-0/">force_rotation_0</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/set-default-font-size-large/">设置默认字体为大号</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/default-time-zone-lang/">默认时区和语言设置为中国</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/open-app-in-launcher/">在Launcher里面打开指定的app</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/ddr-gpu-cpu-freq/">添加DDR、GPU、CPU的频率显示到SYSTEMUI</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 a_bin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

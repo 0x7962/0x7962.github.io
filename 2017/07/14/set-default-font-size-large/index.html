@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>打开短信功能 | a_bin&#39;s blog</title>
+  <title>设置默认字体为大号 | a_bin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="device/rockchip/common/overlay/frameworks/base/core/res/res/values/config.xml1&amp;lt;bool name=&quot;config_sms_capable&quot;&amp;gt;true&amp;lt;/bool&amp;gt;">
+  <meta name="description" content="12345678910111213141516171819diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.javaindex 1266e4d..8050c73 100755--- a/core/java/android/conten">
 <meta property="og:type" content="article">
-<meta property="og:title" content="打开短信功能">
-<meta property="og:url" content="http://yoursite.com/2017/07/14/open-sms/index.html">
+<meta property="og:title" content="设置默认字体为大号">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/set-default-font-size-large/index.html">
 <meta property="og:site_name" content="a_bin&#39;s blog">
-<meta property="og:description" content="device/rockchip/common/overlay/frameworks/base/core/res/res/values/config.xml1&amp;lt;bool name=&quot;config_sms_capable&quot;&amp;gt;true&amp;lt;/bool&amp;gt;">
-<meta property="og:updated_time" content="2017-07-14T02:51:05.000Z">
+<meta property="og:description" content="12345678910111213141516171819diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.javaindex 1266e4d..8050c73 100755--- a/core/java/android/conten">
+<meta property="og:updated_time" content="2017-07-14T08:51:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="打开短信功能">
-<meta name="twitter:description" content="device/rockchip/common/overlay/frameworks/base/core/res/res/values/config.xml1&amp;lt;bool name=&quot;config_sms_capable&quot;&amp;gt;true&amp;lt;/bool&amp;gt;">
+<meta name="twitter:title" content="设置默认字体为大号">
+<meta name="twitter:description" content="12345678910111213141516171819diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.javaindex 1266e4d..8050c73 100755--- a/core/java/android/conten">
   
   
     <link rel="icon" href="/favicon.png">
@@ -62,10 +62,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-open-sms" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-set-default-font-size-large" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/14/open-sms/" class="article-date">
-  <time datetime="2017-07-14T01:33:07.000Z" itemprop="datePublished">2017-07-14</time>
+    <a href="/2017/07/14/set-default-font-size-large/" class="article-date">
+  <time datetime="2017-07-14T08:48:47.000Z" itemprop="datePublished">2017-07-14</time>
 </a>
     
   <div class="article-category">
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      打开短信功能
+      设置默认字体为大号
     </h1>
   
 
@@ -88,12 +88,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>device/rockchip/common/overlay/frameworks/base/core/res/res/values/config.xml</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bool</span> <span class="attr">name</span>=<span class="string">"config_sms_capable"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bool</span>&gt;</span></div></pre></td></tr></table></figure></p>
-
+        <figure class="highlight patch"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.java</div><div class="line">index 1266e4d..8050c73 100755</div><div class="line"><span class="comment">--- a/core/java/android/content/res/Configuration.java</span></div><div class="line"><span class="comment">+++ b/core/java/android/content/res/Configuration.java</span></div><div class="line">@@ -838,7 +838,13 @@ public final class Configuration implements Parcelable, Comparable&lt;Configuration</div><div class="line">        multiwindowflag = UNDEFINE_MULTI_WINDOW;</div><div class="line">        dualscreenflag = UNDEFINE_DUAL_SCREEN;//UNDEFINE_DUAL_SCREEN;</div><div class="line">        phoneMode = 0;</div><div class="line"><span class="deletion">-        fontScale = 1;</span></div><div class="line"><span class="addition">+       //add by a_bin for def large font size</span></div><div class="line"><span class="addition">+               if(SystemProperties.getBoolean("ro.xxx.xxx",true))&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1.3f;</span></div><div class="line"><span class="addition">+               &#125;else&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1;</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line"><span class="addition">+        //fontScale = 1;</span></div><div class="line">         mcc = mnc = 0;</div><div class="line">         locale = null;</div><div class="line">         userSetLocale = false;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/open-sms/" data-id="cj53mka5v000tbuuy1lcu2zcq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/set-default-font-size-large/" data-id="cj53mka5x000xbuuytuhal9ny" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,19 +101,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/14/nav-bar-half-height/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/14/force-rotation-0/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          导航栏高度减小一半
+          force_rotation_0
         
       </div>
     </a>
   
   
-    <a href="/2017/07/14/always-connect-wifi/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/14/default-time-zone-lang/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">当以太网连接后Wi-Fi仍可连接</div>
+      <div class="article-nav-title">默认时区和语言设置为中国</div>
     </a>
   
 </nav>

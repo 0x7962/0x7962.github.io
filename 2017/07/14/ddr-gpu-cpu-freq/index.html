@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>添加DDR、GPU、CPU的频率显示到SYSTEMUI | a_bin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="需要驱动支持才行1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071diff --git a/packages/SystemUI/src/com/android/systemui/Loa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="添加DDR、GPU、CPU的频率显示到SYSTEMUI">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/ddr-gpu-cpu-freq/index.html">
+<meta property="og:site_name" content="a_bin&#39;s blog">
+<meta property="og:description" content="需要驱动支持才行1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071diff --git a/packages/SystemUI/src/com/android/systemui/Loa">
+<meta property="og:updated_time" content="2017-07-14T08:32:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="添加DDR、GPU、CPU的频率显示到SYSTEMUI">
+<meta name="twitter:description" content="需要驱动支持才行1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071diff --git a/packages/SystemUI/src/com/android/systemui/Loa">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">a_bin&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <!--
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      -->
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ddr-gpu-cpu-freq" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/ddr-gpu-cpu-freq/" class="article-date">
+  <time datetime="2017-07-14T08:30:37.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      添加DDR、GPU、CPU的频率显示到SYSTEMUI
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="需要驱动支持才行"><a href="#需要驱动支持才行" class="headerlink" title="需要驱动支持才行"></a>需要驱动支持才行</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">diff --git a/packages/SystemUI/src/com/android/systemui/LoadAverageService.java b/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index 59ffe03..e72c487</div><div class="line"><span class="comment">--- a/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</span></div><div class="line"><span class="comment">+++ b/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</span></div><div class="line">@@ -28,16 +28,23 @@ import android.os.Message;</div><div class="line"> import android.view.Gravity;</div><div class="line"> import android.view.View;</div><div class="line"> import android.view.WindowManager;</div><div class="line"><span class="addition">+import android.util.Log;</span></div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+import java.io.FileInputStream;</span></div><div class="line"><span class="addition">+import java.io.File;</span></div><div class="line"></div><div class="line"> import com.android.internal.os.ProcessCpuTracker;</div><div class="line"></div><div class="line"> public class LoadAverageService extends Service &#123;</div><div class="line"><span class="addition">+       private static final boolean DBG = false;</span></div><div class="line"><span class="addition">+       private static final String TAG = "LoadAverageService";</span></div><div class="line">     private View mView;</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="addition">+       private static final String PATH = "/proc/clk_debug_ctr/clk_debug";</span></div><div class="line"><span class="addition">+</span></div><div class="line">     private static final class CpuTracker extends ProcessCpuTracker &#123;</div><div class="line">         String mLoadText;</div><div class="line">         int mLoadWidth;</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="addition">+               byte[] data = new byte[64];</span></div><div class="line">         private final Paint mPaint;</div><div class="line"></div><div class="line">         CpuTracker(Paint paint) &#123;</div><div class="line">@@ -47,14 +54,37 @@ public class LoadAverageService extends Service &#123;</div><div class="line"></div><div class="line">         @Override</div><div class="line">         public void onLoadChanged(float load1, float load5, float load15) &#123;</div><div class="line"><span class="deletion">-            mLoadText = load1 + " / " + load5 + " / " + load15;</span></div><div class="line"><span class="addition">+               mLoadText = readUseage()+"\n";</span></div><div class="line"><span class="addition">+            mLoadText += load1 + " / " + load5 + " / " + load15;</span></div><div class="line">             mLoadWidth = (int)mPaint.measureText(mLoadText);</div><div class="line"><span class="addition">+                       if(DBG)Log.d(TAG,"a_bin===============&gt;&gt;mLoadText:"+mLoadText);</span></div><div class="line">         &#125;</div><div class="line"></div><div class="line">         @Override</div><div class="line">         public int onMeasureProcessName(String name) &#123;</div><div class="line">             return (int)mPaint.measureText(name);</div><div class="line">         &#125;</div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+               private String readUseage()&#123;</span></div><div class="line"><span class="addition">+                       try&#123;</span></div><div class="line"><span class="addition">+                               FileInputStream inputStream = new FileInputStream(new File(PATH));</span></div><div class="line"><span class="addition">+                               int len = inputStream.read(data);</span></div><div class="line"><span class="addition">+                               if(len &gt; 0)&#123;</span></div><div class="line"><span class="addition">+                                       String ret = new String(data,0,len);</span></div><div class="line"><span class="addition">+                                       String[] strs = ret.split(":");</span></div><div class="line"><span class="addition">+                                       String ddr = strs[1].substring(0,6);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"ddr:"+ddr);</span></div><div class="line"><span class="addition">+                                       String gpu = strs[2].substring(0,6);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"gpu:"+gpu);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"cpu:"+strs[3]);</span></div><div class="line"><span class="addition">+                                       return ddr +"/"+ Integer.valueOf(gpu)+"/"+Integer.valueOf(strs[3]);</span></div><div class="line"><span class="addition">+                               &#125;</span></div><div class="line"><span class="addition">+                       &#125;catch(Exception e)&#123;</span></div><div class="line"><span class="addition">+                               e.printStackTrace();</span></div><div class="line"><span class="addition">+                               return "";</span></div><div class="line"><span class="addition">+                       &#125;</span></div><div class="line"><span class="addition">+                       return "";</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line">     &#125;</div><div class="line"></div><div class="line">     private class LoadView extends View &#123;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/ddr-gpu-cpu-freq/" data-id="cj53mka4r0003buuyo2w0sptg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/14/open-app-in-launcher/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在Launcher里面打开指定的app
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/14/hdmi-and-laba-sound/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MID包HDMI和喇叭都有声音</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3288-5-1-1/">3288_5.1.1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/14/force-rotation-0/">force_rotation_0</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/set-default-font-size-large/">设置默认字体为大号</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/default-time-zone-lang/">默认时区和语言设置为中国</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/open-app-in-launcher/">在Launcher里面打开指定的app</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/ddr-gpu-cpu-freq/">添加DDR、GPU、CPU的频率显示到SYSTEMUI</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 a_bin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
