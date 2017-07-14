@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>没人允许安装未知来源的app | a_bin&#39;s blog</title>
+  <title>默认允许安装未知来源的app | a_bin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011// Check unknown sources.				  // msk by dxx for hhqy @20140809       					boolean mAllowUnkno">
+  <meta name="description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011 // Check unknown sources. // msk by dxx for hhqy @20140809       boolean mAllowUnknownApps =">
 <meta name="keywords" content="System">
 <meta property="og:type" content="article">
-<meta property="og:title" content="没人允许安装未知来源的app">
+<meta property="og:title" content="默认允许安装未知来源的app">
 <meta property="og:url" content="http://yoursite.com/2017/07/14/install-non-market-app/index.html">
 <meta property="og:site_name" content="a_bin&#39;s blog">
-<meta property="og:description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011// Check unknown sources.				  // msk by dxx for hhqy @20140809       					boolean mAllowUnkno">
-<meta property="og:updated_time" content="2017-07-14T12:13:37.000Z">
+<meta property="og:description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011 // Check unknown sources. // msk by dxx for hhqy @20140809       boolean mAllowUnknownApps =">
+<meta property="og:updated_time" content="2017-07-14T12:28:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="没人允许安装未知来源的app">
-<meta name="twitter:description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011// Check unknown sources.				  // msk by dxx for hhqy @20140809       					boolean mAllowUnkno">
+<meta name="twitter:title" content="默认允许安装未知来源的app">
+<meta name="twitter:description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011 // Check unknown sources. // msk by dxx for hhqy @20140809       boolean mAllowUnknownApps =">
   
   
     <link rel="icon" href="/favicon.png">
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      没人允许安装未知来源的app
+      默认允许安装未知来源的app
     </h1>
   
 
@@ -89,12 +89,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Check unknown sources.</span></div><div class="line">				  <span class="comment">// msk by dxx for hhqy @20140809       </span></div><div class="line">					<span class="keyword">boolean</span> mAllowUnknownApps = SystemProperties.getBoolean(<span class="string">"ro.unknowsource.permition"</span>,<span class="keyword">false</span>);</div><div class="line">					<span class="keyword">if</span>(mAllowUnknownApps == <span class="keyword">false</span>)&#123;</div><div class="line">					        <span class="keyword">if</span> (!isInstallingUnknownAppsAllowed()) &#123;</div><div class="line">					            <span class="comment">//ask user to enable setting first</span></div><div class="line">					            showDialogInner(DLG_UNKNOWN_APPS);</div><div class="line">					            <span class="keyword">return</span>;</div><div class="line">					        &#125;</div><div class="line">					&#125;</div><div class="line">        initiateInstall();</div></pre></td></tr></table></figure></p>
+        <p><code>packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// Check unknown sources.</span></div><div class="line"> <span class="comment">// msk by dxx for hhqy @20140809       </span></div><div class="line"><span class="keyword">boolean</span> mAllowUnknownApps = SystemProperties.getBoolean(<span class="string">"ro.unknowsource.permition"</span>,<span class="keyword">false</span>);</div><div class="line"><span class="keyword">if</span>(mAllowUnknownApps == <span class="keyword">false</span>)&#123;</div><div class="line">        <span class="keyword">if</span> (!isInstallingUnknownAppsAllowed()) &#123;</div><div class="line">            <span class="comment">//ask user to enable setting first</span></div><div class="line">            showDialogInner(DLG_UNKNOWN_APPS);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line">      initiateInstall();</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/install-non-market-app/" data-id="cj53ttngk0010pmuykti4sdxw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/install-non-market-app/" data-id="cj53vlu180016syuymiarfap3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -183,7 +183,7 @@
           </li>
         
           <li>
-            <a href="/2017/07/14/install-non-market-app/">没人允许安装未知来源的app</a>
+            <a href="/2017/07/14/install-non-market-app/">默认允许安装未知来源的app</a>
           </li>
         
           <li>

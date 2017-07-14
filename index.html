@@ -93,7 +93,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/two-touch-screen/" data-id="cj53ttnh4001qpmuykvvn4sa3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/two-touch-screen/" data-id="cj53vlu1g001psyuyfqubx8g5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -135,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/disable-reboot-permission/" data-id="cj53ttng4000ipmuys5qmdhc1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/disable-reboot-permission/" data-id="cj53vlu0r000nsyuyodczade1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -165,7 +165,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/install-non-market-app/">没人允许安装未知来源的app</a>
+      <a class="article-title" href="/2017/07/14/install-non-market-app/">默认允许安装未知来源的app</a>
     </h1>
   
 
@@ -173,12 +173,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Check unknown sources.</span></div><div class="line">				  <span class="comment">// msk by dxx for hhqy @20140809       </span></div><div class="line">					<span class="keyword">boolean</span> mAllowUnknownApps = SystemProperties.getBoolean(<span class="string">"ro.unknowsource.permition"</span>,<span class="keyword">false</span>);</div><div class="line">					<span class="keyword">if</span>(mAllowUnknownApps == <span class="keyword">false</span>)&#123;</div><div class="line">					        <span class="keyword">if</span> (!isInstallingUnknownAppsAllowed()) &#123;</div><div class="line">					            <span class="comment">//ask user to enable setting first</span></div><div class="line">					            showDialogInner(DLG_UNKNOWN_APPS);</div><div class="line">					            <span class="keyword">return</span>;</div><div class="line">					        &#125;</div><div class="line">					&#125;</div><div class="line">        initiateInstall();</div></pre></td></tr></table></figure></p>
+        <p><code>packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// Check unknown sources.</span></div><div class="line"> <span class="comment">// msk by dxx for hhqy @20140809       </span></div><div class="line"><span class="keyword">boolean</span> mAllowUnknownApps = SystemProperties.getBoolean(<span class="string">"ro.unknowsource.permition"</span>,<span class="keyword">false</span>);</div><div class="line"><span class="keyword">if</span>(mAllowUnknownApps == <span class="keyword">false</span>)&#123;</div><div class="line">        <span class="keyword">if</span> (!isInstallingUnknownAppsAllowed()) &#123;</div><div class="line">            <span class="comment">//ask user to enable setting first</span></div><div class="line">            showDialogInner(DLG_UNKNOWN_APPS);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line">      initiateInstall();</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/install-non-market-app/" data-id="cj53ttngk0010pmuykti4sdxw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/install-non-market-app/" data-id="cj53vlu180016syuymiarfap3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -221,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/launcher-two-times/" data-id="cj53ttngn0013pmuyngdpqs2b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/launcher-two-times/" data-id="cj53vlu12000zsyuy8kok26zy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -275,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/ethernet-no-internet/" data-id="cj53ttng9000opmuy872drgzx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/ethernet-no-internet/" data-id="cj53vlu0p000ksyuy4ooy825r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -317,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/hdmi-scale-bug/" data-id="cj53ttngh000xpmuyg84ul71e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/hdmi-scale-bug/" data-id="cj53vlu170012syuyq2ndss70" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -359,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/force-rotation-0/" data-id="cj53ttnga000rpmuyv5v1rssx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/force-rotation-0/" data-id="cj53vlu0w000tsyuyfxskvt9q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -401,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/set-default-font-size-large/" data-id="cj53ttnh1001npmuylebygz9h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/set-default-font-size-large/" data-id="cj53vlu1i001ssyuy1awudxea" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -443,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/default-time-zone-lang/" data-id="cj53ttnfy000apmuyon22o93q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/default-time-zone-lang/" data-id="cj53vlu0l000fsyuycjt6v71c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -485,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/open-app-in-launcher/" data-id="cj53ttngw001dpmuyjk15igkp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/open-app-in-launcher/" data-id="cj53vlu1c001gsyuyxjl9iucx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
@@ -560,7 +560,7 @@
           </li>
         
           <li>
-            <a href="/2017/07/14/install-non-market-app/">没人允许安装未知来源的app</a>
+            <a href="/2017/07/14/install-non-market-app/">默认允许安装未知来源的app</a>
           </li>
         
           <li>
