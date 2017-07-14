@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>默认时区和语言设置为中国 | a_bin&#39;s blog</title>
+  <title>没人允许安装未知来源的app | a_bin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123456789101112131415161718192021diff --git a/system.prop b/system.propindex bc09cd4..ac6f131 100644--- a/system.prop+++ b/system.prop@@ -36,7 +36,6 @@ ro.rk.LowBatteryBrightness=false ro.tether.denie">
+  <meta name="description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011// Check unknown sources.				  // msk by dxx for hhqy @20140809       					boolean mAllowUnkno">
 <meta property="og:type" content="article">
-<meta property="og:title" content="默认时区和语言设置为中国">
-<meta property="og:url" content="http://yoursite.com/2017/07/14/default-time-zone-lang/index.html">
+<meta property="og:title" content="没人允许安装未知来源的app">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/install-non-market-app/index.html">
 <meta property="og:site_name" content="a_bin&#39;s blog">
-<meta property="og:description" content="123456789101112131415161718192021diff --git a/system.prop b/system.propindex bc09cd4..ac6f131 100644--- a/system.prop+++ b/system.prop@@ -36,7 +36,6 @@ ro.rk.LowBatteryBrightness=false ro.tether.denie">
-<meta property="og:updated_time" content="2017-07-14T08:45:20.000Z">
+<meta property="og:description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011// Check unknown sources.				  // msk by dxx for hhqy @20140809       					boolean mAllowUnkno">
+<meta property="og:updated_time" content="2017-07-14T11:44:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="默认时区和语言设置为中国">
-<meta name="twitter:description" content="123456789101112131415161718192021diff --git a/system.prop b/system.propindex bc09cd4..ac6f131 100644--- a/system.prop+++ b/system.prop@@ -36,7 +36,6 @@ ro.rk.LowBatteryBrightness=false ro.tether.denie">
+<meta name="twitter:title" content="没人允许安装未知来源的app">
+<meta name="twitter:description" content="packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java1234567891011// Check unknown sources.				  // msk by dxx for hhqy @20140809       					boolean mAllowUnkno">
   
   
     <link rel="icon" href="/favicon.png">
@@ -62,14 +62,14 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-default-time-zone-lang" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-install-non-market-app" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/14/default-time-zone-lang/" class="article-date">
-  <time datetime="2017-07-14T08:44:33.000Z" itemprop="datePublished">2017-07-14</time>
+    <a href="/2017/07/14/install-non-market-app/" class="article-date">
+  <time datetime="2017-07-14T11:43:13.000Z" itemprop="datePublished">2017-07-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+    <a class="article-category-link" href="/categories/3188-3066-4-4-2/">3188/3066_4.4.2</a>
   </div>
 
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      默认时区和语言设置为中国
+      没人允许安装未知来源的app
     </h1>
   
 
@@ -88,11 +88,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight patch"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">diff --git a/system.prop b/system.prop</div><div class="line">index bc09cd4..ac6f131 100644</div><div class="line"><span class="comment">--- a/system.prop</span></div><div class="line"><span class="comment">+++ b/system.prop</span></div><div class="line">@@ -36,7 +36,6 @@ ro.rk.LowBatteryBrightness=false</div><div class="line"> ro.tether.denied=false</div><div class="line"> sys.resolution.changed=false</div><div class="line"> ro.default.size=100</div><div class="line"><span class="deletion">-persist.sys.timezone=</span></div><div class="line"> ro.product.usbfactory=rockchip_usb</div><div class="line"> wifi.supplicant_scan_interval=15</div><div class="line"> ro.factory.tool=0</div><div class="line">@@ -53,3 +52,8 @@ ro.zwqx.getRtcFromDriver=true</div><div class="line"></div><div class="line"> # set def font size to large</div><div class="line"> ro.zwqx.def_fs_large=true</div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+# set timezone &amp; language to china</span></div><div class="line"><span class="addition">+persist.sys.timezone=Asia/Shanghai</span></div><div class="line"><span class="addition">+persist.sys.country=CN</span></div><div class="line"><span class="addition">+persist.sys.language=zh</span></div></pre></td></tr></table></figure>
+        <p><code>packages\apps\PackageInstaller\src\com\android\packageinstaller\PackageInstallerActivity.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Check unknown sources.</span></div><div class="line">				  <span class="comment">// msk by dxx for hhqy @20140809       </span></div><div class="line">					<span class="keyword">boolean</span> mAllowUnknownApps = SystemProperties.getBoolean(<span class="string">"ro.unknowsource.permition"</span>,<span class="keyword">false</span>);</div><div class="line">					<span class="keyword">if</span>(mAllowUnknownApps == <span class="keyword">false</span>)&#123;</div><div class="line">					        <span class="keyword">if</span> (!isInstallingUnknownAppsAllowed()) &#123;</div><div class="line">					            <span class="comment">//ask user to enable setting first</span></div><div class="line">					            showDialogInner(DLG_UNKNOWN_APPS);</div><div class="line">					            <span class="keyword">return</span>;</div><div class="line">					        &#125;</div><div class="line">					&#125;</div><div class="line">        initiateInstall();</div></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/default-time-zone-lang/" data-id="cj53t0pal000cnjuy40fxjs3r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/install-non-market-app/" data-id="cj53t0pap000injuym3x9hzmc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -101,19 +102,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/14/set-default-font-size-large/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          设置默认字体为大号
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/14/open-app-in-launcher/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/14/launcher-two-times/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">在Launcher里面打开指定的app</div>
+      <div class="article-nav-title">launcher启动2次的BUG</div>
     </a>
   
 </nav>

@@ -60,6 +60,127 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-disable-lock-screen" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/disable-lock-screen/" class="article-date">
+  <time datetime="2017-07-14T03:24:45.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/disable-lock-screen/">不显示锁屏界面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SystemUI"><a href="#SystemUI" class="headerlink" title="SystemUI"></a>SystemUI</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java b/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java</div><div class="line">index e66934e..26b131e 100755</div><div class="line"><span class="comment">--- a/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java</span></div><div class="line"><span class="comment">+++ b/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java</span></div><div class="line">@@ -989,6 +989,14 @@ public class KeyguardViewMediator extends SystemUI &#123;</div><div class="line">             hideLocked();</div><div class="line">             return;</div><div class="line">         &#125;</div><div class="line"><span class="addition">+       //add by a_bin for disable keyguard</span></div><div class="line"><span class="addition">+       final boolean keyguardEnable = SystemProperties.getBoolean("ro.xxx.xxx", true);</span></div><div class="line"><span class="addition">+        if(!keyguardEnable)&#123;</span></div><div class="line"><span class="addition">+               if (DEBUG) Log.d(TAG, "Not showing lock screen because it was disabled");</span></div><div class="line"><span class="addition">+                setShowingLocked(false);</span></div><div class="line"><span class="addition">+                       hideLocked();</span></div><div class="line"><span class="addition">+                return;</span></div><div class="line"><span class="addition">+        &#125;</span></div><div class="line"></div><div class="line">         if (DEBUG) Log.d(TAG, "doKeyguard: showing the lock screen");</div><div class="line">         showLocked(options);</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/disable-lock-screen/" data-id="cj53t0pag0009njuy9hiog221" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-screen-red-view" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/screen-red-view/" class="article-date">
+  <time datetime="2017-07-14T03:14:32.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/screen-red-view/">屏幕红边</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改："><a href="#如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改：" class="headerlink" title="如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改："></a>如果是编译的<code>eng</code>模式，就会出现屏幕红边的情况，可做如下修改：</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">diff --git a/core/java/android/os/StrictMode.java b/core/java/android/os/StrictMode.java</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index 6db5f67..40e3d49</div><div class="line"><span class="comment">--- a/core/java/android/os/StrictMode.java</span></div><div class="line"><span class="comment">+++ b/core/java/android/os/StrictMode.java</span></div><div class="line">@@ -120,7 +120,8 @@ public final class StrictMode &#123;</div><div class="line">     private static final boolean LOG_V = Log.isLoggable(TAG, Log.VERBOSE);</div><div class="line"></div><div class="line">     private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);</div><div class="line"><span class="deletion">-    private static final boolean IS_ENG_BUILD = "eng".equals(Build.TYPE);</span></div><div class="line"><span class="addition">+   // private static final boolean IS_ENG_BUILD = "eng".equals(Build.TYPE);  // rk org</span></div><div class="line"><span class="addition">+        private static final boolean IS_ENG_BUILD = false;  // dxx mod for lcd red</span></div><div class="line"></div><div class="line">     /**</div><div class="line">      * Boolean system property to disable strict mode checks outright.</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/screen-red-view/" data-id="cj53t0pb4000unjuyk36ejq3d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mount-ntfs-sdcard" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/mount-ntfs-sdcard/" class="article-date">
+  <time datetime="2017-07-14T02:59:23.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/mount-ntfs-sdcard/">SD卡挂载成NTFS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>device/rockchip/rk3288/fstab.rk30board.bootmode.emmc</code></p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">diff --git a/fstab.rk30board.bootmode.emmc b/fstab.rk30board.bootmode.emmc</div><div class="line">index f504f9f..9fb7df8 100755</div><div class="line"><span class="comment">--- a/fstab.rk30board.bootmode.emmc</span></div><div class="line"><span class="comment">+++ b/fstab.rk30board.bootmode.emmc</span></div><div class="line"><span class="meta">@@ -13,7 +13,7 @@</span></div><div class="line"> # /dev/block/platform/ff0f0000.rksdmmc/by-name/radical_update /radical_update     ext4      noatime,nodiratime,nosuid,nodev,noauto_da_alloc,discard          wait</div><div class="line"></div><div class="line"> /devices/ff0f0000.rksdmmc/mmc_host/mmc          /mnt/internal_sd     vfat      defaults        voldmanaged=internal_sd:14,noemulatedsd</div><div class="line"><span class="deletion">-/devices/ff0c0000.rksdmmc/mmc_host/mmc          /mnt/external_sd     vfat      defaults        voldmanaged=external_sd:auto</span></div><div class="line"><span class="addition">+/devices/ff0c0000.rksdmmc/mmc_host/mmc          /mnt/external_sd     ntfs      defaults        voldmanaged=external_sd:auto</span></div><div class="line"> # Vold does not support multi device path yet</div><div class="line"> # /devices/ff580000.usb                           /mnt/usb_storage     vfat      defaults        voldmanaged=usb_storage:auto</div><div class="line"> # /devices/ff500000.usb                           /mnt/usb_storage     vfat      defaults        voldmanaged=usb_storage:auto</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/mount-ntfs-sdcard/" data-id="cj53t0pay000rnjuyzo4uy0ro" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-add-new-setting-to-Settings" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/14/add-new-setting-to-Settings/" class="article-date">
@@ -93,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/add-new-setting-to-Settings/" data-id="cj53mxg3j0001cpuybawm39cg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/add-new-setting-to-Settings/" data-id="cj53t0p9s0000njuyyw5zpm5o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-show-soft-keyboard/" data-id="cj53mxg3r0005cpuy5sv49hac" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/always-show-soft-keyboard/" data-id="cj53t0pa60004njuyewni7cyn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj53mxg4i000ocpuyx7yz0jfh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj53t0pb7000ynjuy6gtb7t2b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/open-sms/" data-id="cj53mxg4k000qcpuyi01qrkvc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/open-sms/" data-id="cj53t0pb90010njuylpmp5td4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-connect-wifi/" data-id="cj53mxg3o0004cpuyt9cyc0j7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/always-connect-wifi/" data-id="cj53t0pa50003njuy29jhvhrk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +419,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/always-connect-mobile-network/" data-id="cj53mxg3e0000cpuyg1v501ti" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/13/always-connect-mobile-network/" data-id="cj53t0pa00001njuyb2zk4gox" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/disable_statusbar/" data-id="cj53mxg4c000icpuy05l3hs7g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/13/disable_statusbar/" data-id="cj53t0pan000gnjuy0k6aaarg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -362,7 +483,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3288-5-1-1/">3288_5.1.1</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3188-3066-4-4-2/">3188/3066_4.4.2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/3288-5-1-1/">3288_5.1.1</a></li></ul>
     </div>
   </div>
 
@@ -390,23 +511,23 @@
       <ul>
         
           <li>
+            <a href="/2017/07/14/install-non-market-app/">没人允许安装未知来源的app</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/launcher-two-times/">launcher启动2次的BUG</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/ethernet-no-internet/">以太网和wifi/4G同时使用</a>
+          </li>
+        
+          <li>
             <a href="/2017/07/14/hdmi-scale-bug/">修改HDMI设置缩放之后无法保存的bug</a>
           </li>
         
           <li>
             <a href="/2017/07/14/force-rotation-0/">强制横屏显示</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/14/set-default-font-size-large/">设置默认字体为大号</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/14/default-time-zone-lang/">默认时区和语言设置为中国</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/14/open-app-in-launcher/">在Launcher里面打开指定的app</a>
           </li>
         
       </ul>
