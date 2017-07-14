@@ -60,6 +60,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-two-touch-screen" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/two-touch-screen/" class="article-date">
+  <time datetime="2017-07-14T12:08:58.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/two-touch-screen/">双屏异显双触摸</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="在使用Presentation异显的时候，可以2个触摸屏分开操作"><a href="#在使用Presentation异显的时候，可以2个触摸屏分开操作" class="headerlink" title="在使用Presentation异显的时候，可以2个触摸屏分开操作"></a>在使用<code>Presentation</code>异显的时候，可以2个触摸屏分开操作</h4><blockquote>
+<p>原理就是把一块屏设置成<code>external</code><br><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">diff --git a/services/inputflinger/EventHub.cpp b/services/inputflinger/EventHub.cpp</div><div class="line">index e16b741..1ce3020 100644</div><div class="line"><span class="comment">--- a/services/inputflinger/EventHub.cpp</span></div><div class="line"><span class="comment">+++ b/services/inputflinger/EventHub.cpp</span></div><div class="line">@@ -1050,7 +1050,7 @@ static const int32_t GAMEPAD_KEYCODES[] = &#123;</div><div class="line"></div><div class="line"> status_t EventHub::openDeviceLocked(const char *devicePath) &#123;</div><div class="line">     char buffer[80];</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="addition">+    static int  TouchDevDisplayID = 1;//add by a_bin</span></div><div class="line">     ALOGV("Opening device: %s", devicePath);</div><div class="line"></div><div class="line">     int fd = open(devicePath, O_RDWR | O_CLOEXEC);</div><div class="line">@@ -1183,7 +1183,16 @@ status_t EventHub::openDeviceLocked(const char *devicePath) &#123;</div><div class="line">         // a touch screen.</div><div class="line">         if (test_bit(BTN_TOUCH, device-&gt;keyBitmask) || !haveGamepadButtons) &#123;</div><div class="line">             device-&gt;classes |= INPUT_DEVICE_CLASS_TOUCH | INPUT_DEVICE_CLASS_TOUCH_MT;</div><div class="line"><span class="deletion">-        &#125;</span></div><div class="line"><span class="addition">+               //add by a_bin</span></div><div class="line"><span class="addition">+               uint16_t vendorId = device-&gt;identifier.vendor;</span></div><div class="line"><span class="addition">+               ALOGD("==========shangtong========&gt;&gt;%04x",vendorId);</span></div><div class="line"><span class="addition">+               if(TouchDevDisplayID == 1)&#123;</span></div><div class="line"><span class="addition">+                       device-&gt;classes |= INPUT_DEVICE_CLASS_EXTERNAL;</span></div><div class="line"><span class="addition">+                       ALOGD(" %d  name:       \"%s\"\n",__LINE__, device-&gt;identifier.name.string());</span></div><div class="line"><span class="addition">+                       TouchDevDisplayID = 0;</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line"><span class="addition">+               //add end</span></div><div class="line"><span class="addition">+       &#125;</span></div><div class="line">     // Is this an old style single-touch driver?</div><div class="line">     &#125; else if (test_bit(BTN_TOUCH, device-&gt;keyBitmask)</div><div class="line">             &amp;&amp; test_bit(ABS_X, device-&gt;absBitmask)</div></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/two-touch-screen/" data-id="cj53ttnh4001qpmuykvvn4sa3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-disable-reboot-permission" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/disable-reboot-permission/" class="article-date">
+  <time datetime="2017-07-14T12:03:14.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/disable-reboot-permission/">去掉系统的关机、重启的权限检查</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">diff --git a/core/res/AndroidManifest.xml b/core/res/AndroidManifest.xml</div><div class="line">index ccdb5db..f0f8b66 100644</div><div class="line"><span class="comment">--- a/core/res/AndroidManifest.xml</span></div><div class="line"><span class="comment">+++ b/core/res/AndroidManifest.xml</span></div><div class="line"><span class="meta">@@ -3027,9 +3027,10 @@</span></div><div class="line">                android:label="@string/sync_too_many_deletes"</div><div class="line">                android:process=":ui"&gt;</div><div class="line">         &lt;/activity&gt;</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="deletion">-        &lt;activity android:name="com.android.internal.app.ShutdownActivity"</span></div><div class="line"><span class="addition">+       &lt;!--yangbin</span></div><div class="line">             android:permission="android.permission.SHUTDOWN"</div><div class="line"><span class="addition">+       --&gt;</span></div><div class="line"><span class="addition">+        &lt;activity android:name="com.android.internal.app.ShutdownActivity"</span></div><div class="line">             android:theme="@style/Theme.NoDisplay"</div><div class="line">             android:excludeFromRecents="true"&gt;</div><div class="line">             &lt;intent-filter&gt;</div><div class="line">diff --git a/services/core/java/com/android/server/power/PowerManagerService.java b/services/core/java/com/android/server/power/PowerManagerService.java</div><div class="line">index e76b458..f7d40a5 100644</div><div class="line"><span class="comment">--- a/services/core/java/com/android/server/power/PowerManagerService.java</span></div><div class="line"><span class="comment">+++ b/services/core/java/com/android/server/power/PowerManagerService.java</span></div><div class="line">@@ -3293,7 +3293,8 @@ public final class PowerManagerService extends SystemService</div><div class="line">          */</div><div class="line">         @Override // Binder call</div><div class="line">         public void reboot(boolean confirm, String reason, boolean wait) &#123;</div><div class="line"><span class="deletion">-            mContext.enforceCallingOrSelfPermission(android.Manifest.permission.REBOOT, null);</span></div><div class="line"><span class="addition">+            //yangbin</span></div><div class="line"><span class="addition">+           //mContext.enforceCallingOrSelfPermission(android.Manifest.permission.REBOOT, null);</span></div><div class="line">             if (PowerManager.REBOOT_RECOVERY.equals(reason)) &#123;</div><div class="line">                 mContext.enforceCallingOrSelfPermission(android.Manifest.permission.RECOVERY, null);</div><div class="line">             &#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/disable-reboot-permission/" data-id="cj53ttng4000ipmuys5qmdhc1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-install-non-market-app" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/14/install-non-market-app/" class="article-date">
@@ -91,9 +178,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/install-non-market-app/" data-id="cj53tar9d000notuyj5vzf15m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/install-non-market-app/" data-id="cj53ttngk0010pmuykti4sdxw" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
     </footer>
   </div>
   
@@ -132,9 +221,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/launcher-two-times/" data-id="cj53tar9f000potuyyqgl25sq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/launcher-two-times/" data-id="cj53ttngn0013pmuyngdpqs2b" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
     </footer>
   </div>
   
@@ -184,9 +275,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/ethernet-no-internet/" data-id="cj53tar97000fotuyw5nvtdva" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/ethernet-no-internet/" data-id="cj53ttng9000opmuy872drgzx" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
     </footer>
   </div>
   
@@ -224,9 +317,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/hdmi-scale-bug/" data-id="cj53tar9c000lotuypucggd8b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/hdmi-scale-bug/" data-id="cj53ttngh000xpmuyg84ul71e" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
     </footer>
   </div>
   
@@ -264,9 +359,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/force-rotation-0/" data-id="cj53tar98000hotuy0osi4fl9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/force-rotation-0/" data-id="cj53ttnga000rpmuyv5v1rssx" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
     </footer>
   </div>
   
@@ -304,9 +401,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/set-default-font-size-large/" data-id="cj53tar9r0013otuyn75gvjxg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/set-default-font-size-large/" data-id="cj53ttnh1001npmuylebygz9h" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
     </footer>
   </div>
   
@@ -344,9 +443,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/default-time-zone-lang/" data-id="cj53tar910008otuy0zsntuwv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/default-time-zone-lang/" data-id="cj53ttnfy000apmuyon22o93q" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
     </footer>
   </div>
   
@@ -384,90 +485,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/open-app-in-launcher/" data-id="cj53tar9m000wotuymxs96ohe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/open-app-in-launcher/" data-id="cj53ttngw001dpmuyjk15igkp" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
 
-
-  
-    <article id="post-ddr-gpu-cpu-freq" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/ddr-gpu-cpu-freq/" class="article-date">
-  <time datetime="2017-07-14T08:30:37.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/ddr-gpu-cpu-freq/">添加DDR、GPU、CPU的频率显示到SYSTEMUI</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="需要驱动支持才行"><a href="#需要驱动支持才行" class="headerlink" title="需要驱动支持才行"></a>需要驱动支持才行</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">diff --git a/packages/SystemUI/src/com/android/systemui/LoadAverageService.java b/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index 59ffe03..e72c487</div><div class="line"><span class="comment">--- a/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</span></div><div class="line"><span class="comment">+++ b/packages/SystemUI/src/com/android/systemui/LoadAverageService.java</span></div><div class="line">@@ -28,16 +28,23 @@ import android.os.Message;</div><div class="line"> import android.view.Gravity;</div><div class="line"> import android.view.View;</div><div class="line"> import android.view.WindowManager;</div><div class="line"><span class="addition">+import android.util.Log;</span></div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+import java.io.FileInputStream;</span></div><div class="line"><span class="addition">+import java.io.File;</span></div><div class="line"></div><div class="line"> import com.android.internal.os.ProcessCpuTracker;</div><div class="line"></div><div class="line"> public class LoadAverageService extends Service &#123;</div><div class="line"><span class="addition">+       private static final boolean DBG = false;</span></div><div class="line"><span class="addition">+       private static final String TAG = "LoadAverageService";</span></div><div class="line">     private View mView;</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="addition">+       private static final String PATH = "/proc/clk_debug_ctr/clk_debug";</span></div><div class="line"><span class="addition">+</span></div><div class="line">     private static final class CpuTracker extends ProcessCpuTracker &#123;</div><div class="line">         String mLoadText;</div><div class="line">         int mLoadWidth;</div><div class="line"><span class="deletion">-</span></div><div class="line"><span class="addition">+               byte[] data = new byte[64];</span></div><div class="line">         private final Paint mPaint;</div><div class="line"></div><div class="line">         CpuTracker(Paint paint) &#123;</div><div class="line">@@ -47,14 +54,37 @@ public class LoadAverageService extends Service &#123;</div><div class="line"></div><div class="line">         @Override</div><div class="line">         public void onLoadChanged(float load1, float load5, float load15) &#123;</div><div class="line"><span class="deletion">-            mLoadText = load1 + " / " + load5 + " / " + load15;</span></div><div class="line"><span class="addition">+               mLoadText = readUseage()+"\n";</span></div><div class="line"><span class="addition">+            mLoadText += load1 + " / " + load5 + " / " + load15;</span></div><div class="line">             mLoadWidth = (int)mPaint.measureText(mLoadText);</div><div class="line"><span class="addition">+                       if(DBG)Log.d(TAG,"a_bin===============&gt;&gt;mLoadText:"+mLoadText);</span></div><div class="line">         &#125;</div><div class="line"></div><div class="line">         @Override</div><div class="line">         public int onMeasureProcessName(String name) &#123;</div><div class="line">             return (int)mPaint.measureText(name);</div><div class="line">         &#125;</div><div class="line"><span class="addition">+</span></div><div class="line"><span class="addition">+               private String readUseage()&#123;</span></div><div class="line"><span class="addition">+                       try&#123;</span></div><div class="line"><span class="addition">+                               FileInputStream inputStream = new FileInputStream(new File(PATH));</span></div><div class="line"><span class="addition">+                               int len = inputStream.read(data);</span></div><div class="line"><span class="addition">+                               if(len &gt; 0)&#123;</span></div><div class="line"><span class="addition">+                                       String ret = new String(data,0,len);</span></div><div class="line"><span class="addition">+                                       String[] strs = ret.split(":");</span></div><div class="line"><span class="addition">+                                       String ddr = strs[1].substring(0,6);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"ddr:"+ddr);</span></div><div class="line"><span class="addition">+                                       String gpu = strs[2].substring(0,6);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"gpu:"+gpu);</span></div><div class="line"><span class="addition">+                                       if(DBG)Log.d(TAG,"cpu:"+strs[3]);</span></div><div class="line"><span class="addition">+                                       return ddr +"/"+ Integer.valueOf(gpu)+"/"+Integer.valueOf(strs[3]);</span></div><div class="line"><span class="addition">+                               &#125;</span></div><div class="line"><span class="addition">+                       &#125;catch(Exception e)&#123;</span></div><div class="line"><span class="addition">+                               e.printStackTrace();</span></div><div class="line"><span class="addition">+                               return "";</span></div><div class="line"><span class="addition">+                       &#125;</span></div><div class="line"><span class="addition">+                       return "";</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line">     &#125;</div><div class="line"></div><div class="line">     private class LoadView extends View &#123;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/ddr-gpu-cpu-freq/" data-id="cj53tar8x0006otuyxphl0kku" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hdmi-and-laba-sound" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/hdmi-and-laba-sound/" class="article-date">
-  <time datetime="2017-07-14T03:27:42.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/hdmi-and-laba-sound/">MID包HDMI和喇叭都有声音</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="此修改是针对MID包的修改"><a href="#此修改是针对MID包的修改" class="headerlink" title="此修改是针对MID包的修改"></a>此修改是针对MID包的修改</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">diff --git a/services/core/java/com/android/server/WiredAccessoryManager.java b/services/core/java/com/android/server/WiredAccessoryManager.java</div><div class="line">index 02ab68a..d025752 100755</div><div class="line"><span class="comment">--- a/services/core/java/com/android/server/WiredAccessoryManager.java</span></div><div class="line"><span class="comment">+++ b/services/core/java/com/android/server/WiredAccessoryManager.java</span></div><div class="line">@@ -438,8 +438,10 @@ final class WiredAccessoryManager implements WiredAccessoryCallbacks &#123;</div><div class="line">             //</div><div class="line">             // If the kernel does not have an "hdmi_audio" switch, just fall back on the older</div><div class="line">             // "hdmi" switch instead.</div><div class="line"><span class="deletion">-            boolean isBOX = "box".equals(SystemProperties.get("ro.target.product", "box"));</span></div><div class="line"><span class="deletion">-            if (!isBOX) &#123;</span></div><div class="line"><span class="addition">+            //boolean isBOX = "box".equals(SystemProperties.get("ro.target.product", "box"));</span></div><div class="line"><span class="addition">+            //if (!isBOX) &#123;</span></div><div class="line"><span class="addition">+           boolean mAudioSwitch = SystemProperties.getBoolean("ro.rpdzkj.audioswitch", true);</span></div><div class="line"><span class="addition">+            if (mAudioSwitch) &#123;</span></div><div class="line">                 uei = new UEventInfo(NAME_HDMI_AUDIO, BIT_HDMI_AUDIO, 0, 0);</div><div class="line">                 if (uei.checkSwitchExists()) &#123;</div><div class="line">                     retVal.add(uei);</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/hdmi-and-laba-sound/" data-id="cj53tar9a000jotuy5lhajp9i" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -478,7 +500,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -495,9 +517,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/System/">System</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/System/" style="font-size: 10px;">System</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -516,6 +552,14 @@
       <ul>
         
           <li>
+            <a href="/2017/07/14/two-touch-screen/">双屏异显双触摸</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/disable-reboot-permission/">去掉系统的关机、重启的权限检查</a>
+          </li>
+        
+          <li>
             <a href="/2017/07/14/install-non-market-app/">没人允许安装未知来源的app</a>
           </li>
         
@@ -525,14 +569,6 @@
         
           <li>
             <a href="/2017/07/14/ethernet-no-internet/">以太网和wifi/4G同时使用</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/14/hdmi-scale-bug/">修改HDMI设置缩放之后无法保存的bug</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/14/force-rotation-0/">强制横屏显示</a>
           </li>
         
       </ul>
