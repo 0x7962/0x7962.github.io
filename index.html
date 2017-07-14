@@ -60,6 +60,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mount-ntfs-sdcard" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/mount-ntfs-sdcard/" class="article-date">
+  <time datetime="2017-07-14T02:59:23.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/mount-ntfs-sdcard/">SD卡挂载成NTFS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>device/rockchip/rk3288/fstab.rk30board.bootmode.emmc</code></p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">diff --git a/fstab.rk30board.bootmode.emmc b/fstab.rk30board.bootmode.emmc</div><div class="line">index f504f9f..9fb7df8 100755</div><div class="line"><span class="comment">--- a/fstab.rk30board.bootmode.emmc</span></div><div class="line"><span class="comment">+++ b/fstab.rk30board.bootmode.emmc</span></div><div class="line"><span class="meta">@@ -13,7 +13,7 @@</span></div><div class="line"> # /dev/block/platform/ff0f0000.rksdmmc/by-name/radical_update /radical_update     ext4      noatime,nodiratime,nosuid,nodev,noauto_da_alloc,discard          wait</div><div class="line"></div><div class="line"> /devices/ff0f0000.rksdmmc/mmc_host/mmc          /mnt/internal_sd     vfat      defaults        voldmanaged=internal_sd:14,noemulatedsd</div><div class="line"><span class="deletion">-/devices/ff0c0000.rksdmmc/mmc_host/mmc          /mnt/external_sd     vfat      defaults        voldmanaged=external_sd:auto</span></div><div class="line"><span class="addition">+/devices/ff0c0000.rksdmmc/mmc_host/mmc          /mnt/external_sd     ntfs      defaults        voldmanaged=external_sd:auto</span></div><div class="line"> # Vold does not support multi device path yet</div><div class="line"> # /devices/ff580000.usb                           /mnt/usb_storage     vfat      defaults        voldmanaged=usb_storage:auto</div><div class="line"> # /devices/ff500000.usb                           /mnt/usb_storage     vfat      defaults        voldmanaged=usb_storage:auto</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/mount-ntfs-sdcard/" data-id="cj53a1yeo0007wmuylfghrgl6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-add-new-setting-to-Settings" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/14/add-new-setting-to-Settings/" class="article-date">
@@ -93,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/add-new-setting-to-Settings/" data-id="cj539oapi0001vjuyxjwnfj58" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/add-new-setting-to-Settings/" data-id="cj53a1yea0001wmuyxds4fd9t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-show-soft-keyboard/" data-id="cj539oapr0004vjuy3kjyf8p7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/always-show-soft-keyboard/" data-id="cj53a1yeg0004wmuyxqoy49z1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj539oaqq000fvjuyjuihkz3c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj53a1yes0009wmuyuiiifgcn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/open-sms/" data-id="cj539oaq10007vjuyncn0455n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/open-sms/" data-id="cj53a1yey000cwmuyl0vieehy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-connect-wifi/" data-id="cj539oapp0003vjuyj8j067oh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/always-connect-wifi/" data-id="cj53a1yee0003wmuyz6yapzmt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/always-connect-mobile-network/" data-id="cj539oapd0000vjuyt234ci2v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/13/always-connect-mobile-network/" data-id="cj53a1ye50000wmuy5yxivnk5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/disable_statusbar/" data-id="cj539oapu0005vjuymxflkvdp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/13/disable_statusbar/" data-id="cj53a1yek0005wmuy55q7pod0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -386,6 +427,10 @@
       <ul>
         
           <li>
+            <a href="/2017/07/14/mount-ntfs-sdcard/">SD卡挂载成NTFS</a>
+          </li>
+        
+          <li>
             <a href="/2017/07/14/add-new-setting-to-Settings/">在设置里面添加一个新的设置项</a>
           </li>
         
@@ -399,10 +444,6 @@
         
           <li>
             <a href="/2017/07/14/open-sms/">打开短信功能</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/14/always-connect-wifi/">当以太网连接后Wi-Fi仍可连接</a>
           </li>
         
       </ul>
