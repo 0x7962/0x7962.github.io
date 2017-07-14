@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>当以太网连接后Wi-Fi仍可连接 | a_bin&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="frameworks/opt/net/wifi/service/java/com/android/server/wifi/WifiStateMachine.java123456789101112131415161718192021222324252627private void setScanResults() &amp;#123;	...	if (getCurrentState() == mRoamin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当以太网连接后Wi-Fi仍可连接">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/always-connect-wifi/index.html">
+<meta property="og:site_name" content="a_bin&#39;s blog">
+<meta property="og:description" content="frameworks/opt/net/wifi/service/java/com/android/server/wifi/WifiStateMachine.java123456789101112131415161718192021222324252627private void setScanResults() &amp;#123;	...	if (getCurrentState() == mRoamin">
+<meta property="og:updated_time" content="2017-07-14T01:31:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="当以太网连接后Wi-Fi仍可连接">
+<meta name="twitter:description" content="frameworks/opt/net/wifi/service/java/com/android/server/wifi/WifiStateMachine.java123456789101112131415161718192021222324252627private void setScanResults() &amp;#123;	...	if (getCurrentState() == mRoamin">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">a_bin&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <!--
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      -->
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-always-connect-wifi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/always-connect-wifi/" class="article-date">
+  <time datetime="2017-07-14T01:29:48.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      当以太网连接后Wi-Fi仍可连接
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>frameworks/opt/net/wifi/service/java/com/android/server/wifi/WifiStateMachine.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">private void setScanResults() &#123;</div><div class="line">	...</div><div class="line">	if (getCurrentState() == mRoamingState</div><div class="line">                || getCurrentState() == mObtainingIpState</div><div class="line">                || getCurrentState() == mScanModeState</div><div class="line">                || getCurrentState() == mDisconnectingState</div><div class="line">                || (getCurrentState() == mConnectedState</div><div class="line">                &amp;&amp; !mWifiConfigStore.enableAutoJoinWhenAssociated)</div><div class="line">                || linkDebouncing</div><div class="line">                || state == SupplicantState.ASSOCIATING</div><div class="line">                || state == SupplicantState.AUTHENTICATING</div><div class="line">                || state == SupplicantState.FOUR_WAY_HANDSHAKE</div><div class="line">                || state == SupplicantState.GROUP_HANDSHAKE</div><div class="line">                || (/* keep autojoin enabled if user has manually selected a wifi network,</div><div class="line">                        so as to make sure we reliably remain connected to this network */</div><div class="line">                        mConnectionRequests == 0 &amp;&amp; selection == null)) &#123;</div><div class="line">            // Dont attempt auto-joining again while we are already attempting to join</div><div class="line">            // and/or obtaining Ip address</div><div class="line">            attemptAutoJoin = false;</div><div class="line">        &#125;</div><div class="line">    //add by a_bin for blzn network</div><div class="line">    if(SystemProperties.getBoolean(&quot;ro.xxx.xxx&quot;,false))&#123;</div><div class="line">            attemptAutoJoin = true;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/14/always-connect-wifi/" data-id="cj536y2jb0001mtuy8qwhlkvk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/14/open-sms/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          打开短信功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/13/always-connect-mobile-network/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">当Wi-Fi或者以太网连接之后4G仍然可以连接</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3288-5-1-1/">3288_5.1.1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/14/open-sms/">打开短信功能</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/always-connect-wifi/">当以太网连接后Wi-Fi仍可连接</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/always-connect-mobile-network/">当Wi-Fi或者以太网连接之后4G仍然可以连接</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/disable_statusbar/">禁止状态栏下拉</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 a_bin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
