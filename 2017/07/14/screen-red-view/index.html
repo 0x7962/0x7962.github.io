@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>导航栏高度减小一半 | a_bin&#39;s blog</title>
+  <title>屏幕红边 | a_bin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="framework/base/core/res/res/values/dimens.xml 12&amp;lt;dimen name=&quot;navigation_bar_height&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;&amp;lt;dimen name=&quot;navigation_bar_height_landscape&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;">
+  <meta name="description" content="如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改：12345678910111213141516diff --git a/core/java/android/os/StrictMode.java b/core/java/android/os/StrictMode.javaold mode 100644new mode 100755index 6db5f67..40e3d49--- a/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="导航栏高度减小一半">
-<meta property="og:url" content="http://yoursite.com/2017/07/14/nav-bar-half-height/index.html">
+<meta property="og:title" content="屏幕红边">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/screen-red-view/index.html">
 <meta property="og:site_name" content="a_bin&#39;s blog">
-<meta property="og:description" content="framework/base/core/res/res/values/dimens.xml 12&amp;lt;dimen name=&quot;navigation_bar_height&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;&amp;lt;dimen name=&quot;navigation_bar_height_landscape&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;">
-<meta property="og:updated_time" content="2017-07-14T02:50:36.000Z">
+<meta property="og:description" content="如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改：12345678910111213141516diff --git a/core/java/android/os/StrictMode.java b/core/java/android/os/StrictMode.javaold mode 100644new mode 100755index 6db5f67..40e3d49--- a/">
+<meta property="og:updated_time" content="2017-07-14T03:23:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="导航栏高度减小一半">
-<meta name="twitter:description" content="framework/base/core/res/res/values/dimens.xml 12&amp;lt;dimen name=&quot;navigation_bar_height&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;&amp;lt;dimen name=&quot;navigation_bar_height_landscape&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;">
+<meta name="twitter:title" content="屏幕红边">
+<meta name="twitter:description" content="如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改：12345678910111213141516diff --git a/core/java/android/os/StrictMode.java b/core/java/android/os/StrictMode.javaold mode 100644new mode 100755index 6db5f67..40e3d49--- a/">
   
   
     <link rel="icon" href="/favicon.png">
@@ -62,10 +62,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-nav-bar-half-height" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-screen-red-view" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/14/nav-bar-half-height/" class="article-date">
-  <time datetime="2017-07-14T01:39:17.000Z" itemprop="datePublished">2017-07-14</time>
+    <a href="/2017/07/14/screen-red-view/" class="article-date">
+  <time datetime="2017-07-14T03:14:32.000Z" itemprop="datePublished">2017-07-14</time>
 </a>
     
   <div class="article-category">
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      导航栏高度减小一半
+      屏幕红边
     </h1>
   
 
@@ -88,12 +88,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>framework/base/core/res/res/values/dimens.xml</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"navigation_bar_height"</span>&gt;</span>24dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"navigation_bar_height_landscape"</span>&gt;</span>24dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div></pre></td></tr></table></figure>
+        <h2 id="如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改："><a href="#如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改：" class="headerlink" title="如果是编译的eng模式，就会出现屏幕红边的情况，可做如下修改："></a>如果是编译的<code>eng</code>模式，就会出现屏幕红边的情况，可做如下修改：</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">diff --git a/core/java/android/os/StrictMode.java b/core/java/android/os/StrictMode.java</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index 6db5f67..40e3d49</div><div class="line"><span class="comment">--- a/core/java/android/os/StrictMode.java</span></div><div class="line"><span class="comment">+++ b/core/java/android/os/StrictMode.java</span></div><div class="line">@@ -120,7 +120,8 @@ public final class StrictMode &#123;</div><div class="line">     private static final boolean LOG_V = Log.isLoggable(TAG, Log.VERBOSE);</div><div class="line"></div><div class="line">     private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);</div><div class="line"><span class="deletion">-    private static final boolean IS_ENG_BUILD = "eng".equals(Build.TYPE);</span></div><div class="line"><span class="addition">+   // private static final boolean IS_ENG_BUILD = "eng".equals(Build.TYPE);  // rk org</span></div><div class="line"><span class="addition">+        private static final boolean IS_ENG_BUILD = false;  // dxx mod for lcd red</span></div><div class="line"></div><div class="line">     /**</div><div class="line">      * Boolean system property to disable strict mode checks outright.</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj53b4vbc000cytuyavglz04d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/screen-red-view/" data-id="cj53b4vbg000gytuyk4itb2w7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,19 +101,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/14/always-show-soft-keyboard/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/14/disable-lock-screen/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          外接键盘插入后还能显示软键盘
+          不显示锁屏界面
         
       </div>
     </a>
   
   
-    <a href="/2017/07/14/open-sms/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/14/mount-ntfs-sdcard/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">打开短信功能</div>
+      <div class="article-nav-title">SD卡挂载成NTFS</div>
     </a>
   
 </nav>

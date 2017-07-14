@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>导航栏高度减小一半 | a_bin&#39;s blog</title>
+  <title>不显示锁屏界面 | a_bin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="framework/base/core/res/res/values/dimens.xml 12&amp;lt;dimen name=&quot;navigation_bar_height&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;&amp;lt;dimen name=&quot;navigation_bar_height_landscape&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;">
+  <meta name="description" content="SystemUI12345678910111213141516171819diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java b/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="导航栏高度减小一半">
-<meta property="og:url" content="http://yoursite.com/2017/07/14/nav-bar-half-height/index.html">
+<meta property="og:title" content="不显示锁屏界面">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/disable-lock-screen/index.html">
 <meta property="og:site_name" content="a_bin&#39;s blog">
-<meta property="og:description" content="framework/base/core/res/res/values/dimens.xml 12&amp;lt;dimen name=&quot;navigation_bar_height&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;&amp;lt;dimen name=&quot;navigation_bar_height_landscape&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;">
-<meta property="og:updated_time" content="2017-07-14T02:50:36.000Z">
+<meta property="og:description" content="SystemUI12345678910111213141516171819diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java b/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediat">
+<meta property="og:updated_time" content="2017-07-14T03:26:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="导航栏高度减小一半">
-<meta name="twitter:description" content="framework/base/core/res/res/values/dimens.xml 12&amp;lt;dimen name=&quot;navigation_bar_height&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;&amp;lt;dimen name=&quot;navigation_bar_height_landscape&quot;&amp;gt;24dp&amp;lt;/dimen&amp;gt;">
+<meta name="twitter:title" content="不显示锁屏界面">
+<meta name="twitter:description" content="SystemUI12345678910111213141516171819diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java b/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediat">
   
   
     <link rel="icon" href="/favicon.png">
@@ -62,10 +62,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-nav-bar-half-height" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-disable-lock-screen" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/14/nav-bar-half-height/" class="article-date">
-  <time datetime="2017-07-14T01:39:17.000Z" itemprop="datePublished">2017-07-14</time>
+    <a href="/2017/07/14/disable-lock-screen/" class="article-date">
+  <time datetime="2017-07-14T03:24:45.000Z" itemprop="datePublished">2017-07-14</time>
 </a>
     
   <div class="article-category">
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      导航栏高度减小一半
+      不显示锁屏界面
     </h1>
   
 
@@ -88,12 +88,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>framework/base/core/res/res/values/dimens.xml</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"navigation_bar_height"</span>&gt;</span>24dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"navigation_bar_height_landscape"</span>&gt;</span>24dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div></pre></td></tr></table></figure>
+        <h2 id="SystemUI"><a href="#SystemUI" class="headerlink" title="SystemUI"></a>SystemUI</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java b/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java</div><div class="line">index e66934e..26b131e 100755</div><div class="line"><span class="comment">--- a/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java</span></div><div class="line"><span class="comment">+++ b/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java</span></div><div class="line">@@ -989,6 +989,14 @@ public class KeyguardViewMediator extends SystemUI &#123;</div><div class="line">             hideLocked();</div><div class="line">             return;</div><div class="line">         &#125;</div><div class="line"><span class="addition">+       //add by a_bin for disable keyguard</span></div><div class="line"><span class="addition">+       final boolean keyguardEnable = SystemProperties.getBoolean("ro.xxx.xxx", true);</span></div><div class="line"><span class="addition">+        if(!keyguardEnable)&#123;</span></div><div class="line"><span class="addition">+               if (DEBUG) Log.d(TAG, "Not showing lock screen because it was disabled");</span></div><div class="line"><span class="addition">+                setShowingLocked(false);</span></div><div class="line"><span class="addition">+                       hideLocked();</span></div><div class="line"><span class="addition">+                return;</span></div><div class="line"><span class="addition">+        &#125;</span></div><div class="line"></div><div class="line">         if (DEBUG) Log.d(TAG, "doKeyguard: showing the lock screen");</div><div class="line">         showLocked(options);</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj53b4vbc000cytuyavglz04d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/disable-lock-screen/" data-id="cj53b4vb40007ytuy5yt0denh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,19 +101,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/14/always-show-soft-keyboard/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/14/hdmi-and-laba-sound/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          外接键盘插入后还能显示软键盘
+          MID包HDMI和喇叭都有声音
         
       </div>
     </a>
   
   
-    <a href="/2017/07/14/open-sms/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/14/screen-red-view/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">打开短信功能</div>
+      <div class="article-nav-title">屏幕红边</div>
     </a>
   
 </nav>
