@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>a_bin&#39;s blog</title>
+  <title>在设置里面添加一个新的设置项 | a_bin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="a_bin&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在设置里面添加一个新的设置项">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/add-new-setting-to-Settings/index.html">
 <meta property="og:site_name" content="a_bin&#39;s blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:updated_time" content="2017-07-14T01:47:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="a_bin&#39;s blog">
+<meta name="twitter:title" content="在设置里面添加一个新的设置项">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
   
   
     <link rel="icon" href="/favicon.png">
@@ -58,9 +62,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-add-new-setting-to-Settings" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-add-new-setting-to-Settings" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/14/add-new-setting-to-Settings/" class="article-date">
   <time datetime="2017-07-14T01:46:29.000Z" itemprop="datePublished">2017-07-14</time>
@@ -77,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/add-new-setting-to-Settings/">在设置里面添加一个新的设置项</a>
+    <h1 class="article-title" itemprop="name">
+      在设置里面添加一个新的设置项
     </h1>
   
 
@@ -96,256 +98,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-always-show-soft-keyboard" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/always-show-soft-keyboard/" class="article-date">
-  <time datetime="2017-07-14T01:41:54.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/always-show-soft-keyboard/">外接键盘插入后还能显示软键盘</a>
-    </h1>
+    <a href="/2017/07/14/always-show-soft-keyboard/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">外接键盘插入后还能显示软键盘</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>frameworks/native/services/inputflinger/EventHub.cpp</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@@ -1051,6 +1051,13 @@ static const int32_t GAMEPAD_KEYCODES[] = &#123;</div><div class="line"> status_t EventHub::openDeviceLocked(const char *devicePath) &#123;</div><div class="line">     char buffer[80];</div><div class="line"> </div><div class="line">+    //add by yangbin for always show soft keyboard when hard keyboard insert</div><div class="line">+    char prop_value[PROPERTY_VALUE_MAX];</div><div class="line">+    int always_show_sf_input;</div><div class="line">+    property_get(&quot;ro.clk.always_sf_input&quot;, prop_value, &quot;0&quot;);</div><div class="line">+    always_show_sf_input = atoi(prop_value);</div><div class="line">+    //add end</div><div class="line">+</div><div class="line">     ALOGV(&quot;Opening device: %s&quot;, devicePath);</div><div class="line"> </div><div class="line">     int fd = open(devicePath, O_RDWR | O_CLOEXEC);</div><div class="line">@@ -1275,6 +1282,11 @@ status_t EventHub::openDeviceLocked(const char *devicePath) &#123;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> </div><div class="line">+    //add by yangbin for always show soft keyboard</div><div class="line">+    ALOGD(&quot;yangbin====&gt;always_show_sf_input:%d&quot;,always_show_sf_input);</div><div class="line">+    if(always_show_sf_input == 1)</div><div class="line">+    	device-&gt;classes &amp;= 0xFFFF &amp; ~INPUT_DEVICE_CLASS_ALPHAKEY;</div><div class="line">+</div><div class="line">     // If the device isn&apos;t recognized as something we handle, don&apos;t monitor it.</div><div class="line">     if (device-&gt;classes == 0) &#123;</div><div class="line">         ALOGV(&quot;Dropping device: id=%d, path=&apos;%s&apos;, name=&apos;%s&apos;&quot;,</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-show-soft-keyboard/" data-id="cj537etl20004nyuy85xcmvvf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-nav-bar-half-height" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/nav-bar-half-height/" class="article-date">
-  <time datetime="2017-07-14T01:39:17.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/nav-bar-half-height/">导航栏高度减小一半</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>framework/base/core/res/res/values/dimens.xml</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;dimen name=&quot;navigation_bar_height&quot;&gt;24dp&lt;/dimen&gt;</div><div class="line">&lt;dimen name=&quot;navigation_bar_height_landscape&quot;&gt;24dp&lt;/dimen&gt;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/nav-bar-half-height/" data-id="cj537etl90007nyuy7la5qmk7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-open-sms" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/open-sms/" class="article-date">
-  <time datetime="2017-07-14T01:33:07.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/open-sms/">打开短信功能</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>device/rockchip/common/overlay/frameworks/base/core/res/res/values/config.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;bool name=&quot;config_sms_capable&quot;&gt;true&lt;/bool&gt;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/open-sms/" data-id="cj537etla0009nyuy9i0ks1t8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-always-connect-wifi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/always-connect-wifi/" class="article-date">
-  <time datetime="2017-07-14T01:29:48.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/always-connect-wifi/">当以太网连接后Wi-Fi仍可连接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>frameworks/opt/net/wifi/service/java/com/android/server/wifi/WifiStateMachine.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">private void setScanResults() &#123;</div><div class="line">	...</div><div class="line">	if (getCurrentState() == mRoamingState</div><div class="line">                || getCurrentState() == mObtainingIpState</div><div class="line">                || getCurrentState() == mScanModeState</div><div class="line">                || getCurrentState() == mDisconnectingState</div><div class="line">                || (getCurrentState() == mConnectedState</div><div class="line">                &amp;&amp; !mWifiConfigStore.enableAutoJoinWhenAssociated)</div><div class="line">                || linkDebouncing</div><div class="line">                || state == SupplicantState.ASSOCIATING</div><div class="line">                || state == SupplicantState.AUTHENTICATING</div><div class="line">                || state == SupplicantState.FOUR_WAY_HANDSHAKE</div><div class="line">                || state == SupplicantState.GROUP_HANDSHAKE</div><div class="line">                || (/* keep autojoin enabled if user has manually selected a wifi network,</div><div class="line">                        so as to make sure we reliably remain connected to this network */</div><div class="line">                        mConnectionRequests == 0 &amp;&amp; selection == null)) &#123;</div><div class="line">            // Dont attempt auto-joining again while we are already attempting to join</div><div class="line">            // and/or obtaining Ip address</div><div class="line">            attemptAutoJoin = false;</div><div class="line">        &#125;</div><div class="line">    //add by a_bin for blzn network</div><div class="line">    if(SystemProperties.getBoolean(&quot;ro.xxx.xxx&quot;,false))&#123;</div><div class="line">            attemptAutoJoin = true;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/always-connect-wifi/" data-id="cj537etl10003nyuy8n3da19a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-always-connect-mobile-network" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/13/always-connect-mobile-network/" class="article-date">
-  <time datetime="2017-07-13T13:59:14.000Z" itemprop="datePublished">2017-07-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/13/always-connect-mobile-network/">当Wi-Fi或者以太网连接之后4G仍然可以连接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>frameworks/opt/telephony/src/java/com/android/internal/telephony/dataconnection/DcTracker.java</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">private void setupDataOnConnectableApns(String reason, RetryFailures retryFailures) &#123;</div><div class="line">	...</div><div class="line">	for (ApnContext apnContext : mPrioritySortedApnContexts) &#123;</div><div class="line">            if (DBG) log(&quot;setupDataOnConnectableApns: apnContext &quot; + apnContext);</div><div class="line">            if (apnContext.getState() == DctConstants.State.FAILED) &#123;</div><div class="line">                if (retryFailures == RetryFailures.ALWAYS) &#123;</div><div class="line">                    apnContext.setState(DctConstants.State.IDLE);</div><div class="line">                &#125; else if (apnContext.isConcurrentVoiceAndDataAllowed() == false &amp;&amp;</div><div class="line">                         mPhone.getServiceStateTracker().isConcurrentVoiceAndDataAllowed()) &#123;</div><div class="line">                    // RetryFailures.ONLY_ON_CHANGE - check if voice concurrency has changed</div><div class="line">                    apnContext.setState(DctConstants.State.IDLE);</div><div class="line">                &#125; else &#123;</div><div class="line">                    // RetryFailures.ONLY_ON_CHANGE - check if the apns have changed</div><div class="line">                    int radioTech = mPhone.getServiceState().getRilDataRadioTechnology();</div><div class="line">                    ArrayList&lt;ApnSetting&gt; originalApns = apnContext.getOriginalWaitingApns();</div><div class="line">                    if (originalApns != null &amp;&amp; originalApns.isEmpty() == false) &#123;</div><div class="line">                        waitingApns = buildWaitingApns(apnContext.getApnType(), radioTech);</div><div class="line">                        if (originalApns.size() != waitingApns.size() ||</div><div class="line">                                originalApns.containsAll(waitingApns) == false) &#123;</div><div class="line">                            apnContext.setState(DctConstants.State.IDLE);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">                //add by a_bin for blzn network</div><div class="line">                if(SystemProperties.getBoolean(&quot;ro.xxx.xxx&quot;, false))&#123;</div><div class="line">                        //Log.d(LOG_TAG,&quot;setupDataOnConnectableApns===apnContext.getApnType===&gt;&gt;&gt;&quot;+apnContext.getApnType());</div><div class="line">                        if(apnContext.getApnType().equals(&quot;default&quot;))&#123;</div><div class="line">                                //Log.d(LOG_TAG,&quot;setupDataOnConnectableApns===setEnabled true===&gt;&gt;&gt;&quot;);</div><div class="line">                                apnContext.setEnabled(true);</div><div class="line">                        &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            if (apnContext.isConnectable()) &#123;</div><div class="line">                log(&quot;setupDataOnConnectableApns: isConnectable() call trySetupData&quot;);</div><div class="line">                apnContext.setReason(reason);</div><div class="line">                trySetupData(apnContext, waitingApns);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/always-connect-mobile-network/" data-id="cj537etkx0001nyuysenr7cyj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-disable_statusbar" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/13/disable_statusbar/" class="article-date">
-  <time datetime="2017-07-13T13:45:32.000Z" itemprop="datePublished">2017-07-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/13/disable_statusbar/">禁止状态栏下拉</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/PanelView.java</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void setTouchDisabled(boolean disabled) &#123;</div><div class="line">	mTouchDisabled = disabled;</div><div class="line">	//add by yangbin for disable touch statusbar</div><div class="line">	if(SystemProperties.getBoolean(&quot;ro.zwqx.DisableTouchStatusbar&quot;,false))</div><div class="line">		mTouchDisabled = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/13/disable_statusbar/" data-id="cj537etl50005nyuya5z6h4zo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
