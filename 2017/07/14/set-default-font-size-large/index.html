@@ -1,242 +1,270 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>设置默认字体为大号 | a_bin&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12345678910111213141516171819diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.javaindex 1266e4d..8050c73 100755--- a/core/java/android/conten">
-<meta name="keywords" content="System">
-<meta property="og:type" content="article">
-<meta property="og:title" content="设置默认字体为大号">
-<meta property="og:url" content="http://yoursite.com/2017/07/14/set-default-font-size-large/index.html">
-<meta property="og:site_name" content="a_bin&#39;s blog">
-<meta property="og:description" content="12345678910111213141516171819diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.javaindex 1266e4d..8050c73 100755--- a/core/java/android/conten">
-<meta property="og:updated_time" content="2017-07-14T12:14:51.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设置默认字体为大号">
-<meta name="twitter:description" content="12345678910111213141516171819diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.javaindex 1266e4d..8050c73 100755--- a/core/java/android/conten">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="a_bin&#39;s blog">
+  <meta name="keyword" content="Android">
+  <title>
+    
+      设置默认字体为大号 | a_bin&#39;s blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
-  
-
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
 </head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">a_bin&#39;s blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      <!--
-      <nav id="sub-nav">
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      -->
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-set-default-font-size-large" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/set-default-font-size-large/" class="article-date">
-  <time datetime="2017-07-14T08:48:47.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/3288-5-1-1/">3288_5.1.1</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      设置默认字体为大号
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight patch"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.java</div><div class="line">index 1266e4d..8050c73 100755</div><div class="line"><span class="comment">--- a/core/java/android/content/res/Configuration.java</span></div><div class="line"><span class="comment">+++ b/core/java/android/content/res/Configuration.java</span></div><div class="line">@@ -838,7 +838,13 @@ public final class Configuration implements Parcelable, Comparable&lt;Configuration</div><div class="line">        multiwindowflag = UNDEFINE_MULTI_WINDOW;</div><div class="line">        dualscreenflag = UNDEFINE_DUAL_SCREEN;//UNDEFINE_DUAL_SCREEN;</div><div class="line">        phoneMode = 0;</div><div class="line"><span class="deletion">-        fontScale = 1;</span></div><div class="line"><span class="addition">+       //add by a_bin for def large font size</span></div><div class="line"><span class="addition">+               if(SystemProperties.getBoolean("ro.xxx.xxx",true))&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1.3f;</span></div><div class="line"><span class="addition">+               &#125;else&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1;</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line"><span class="addition">+        //fontScale = 1;</span></div><div class="line">         mcc = mnc = 0;</div><div class="line">         locale = null;</div><div class="line">         userSetLocale = false;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/set-default-font-size-large/" data-id="cj54qmvn0001o5uuy1fuckcxf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/07/14/force-rotation-0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          强制横屏显示
-        
-      </div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>a_bin's blog</span>
     </a>
-  
-  
-    <a href="/2017/07/14/default-time-zone-lang/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">默认时区和语言设置为中国</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
         
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3188-3066-4-4-2/">3188/3066_4.4.2</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3288-5-1-1/">3288_5.1.1</a><span class="category-list-count">20</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/System/">System</a><span class="tag-list-count">22</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/System/" style="font-size: 10px;">System</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">22</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/07/14/two-touch-screen/">双屏异显双触摸</a>
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
           </li>
         
-          <li>
-            <a href="/2017/07/14/disable-reboot-permission/">去掉系统的关机、重启的权限检查</a>
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
           </li>
         
-          <li>
-            <a href="/2017/07/14/install-non-market-app/">默认允许安装未知来源的app</a>
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
           </li>
         
-          <li>
-            <a href="/2017/07/14/launcher-two-times/">launcher启动2次的BUG</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/14/ethernet-no-internet/">以太网和wifi/4G同时使用</a>
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
           </li>
         
       </ul>
     </div>
   </div>
+</header>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 a_bin<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    <div id="article-banner">
+  <h2>设置默认字体为大号</h2>
+  <p class="post-date">2017-07-14</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
   </div>
-</footer>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><figure class="highlight patch"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.java</div><div class="line">index 1266e4d..8050c73 100755</div><div class="line"><span class="comment">--- a/core/java/android/content/res/Configuration.java</span></div><div class="line"><span class="comment">+++ b/core/java/android/content/res/Configuration.java</span></div><div class="line">@@ -838,7 +838,13 @@ public final class Configuration implements Parcelable, Comparable&lt;Configuration</div><div class="line">        multiwindowflag = UNDEFINE_MULTI_WINDOW;</div><div class="line">        dualscreenflag = UNDEFINE_DUAL_SCREEN;//UNDEFINE_DUAL_SCREEN;</div><div class="line">        phoneMode = 0;</div><div class="line"><span class="deletion">-        fontScale = 1;</span></div><div class="line"><span class="addition">+       //add by a_bin for def large font size</span></div><div class="line"><span class="addition">+               if(SystemProperties.getBoolean("ro.xxx.xxx",true))&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1.3f;</span></div><div class="line"><span class="addition">+               &#125;else&#123;</span></div><div class="line"><span class="addition">+                       fontScale = 1;</span></div><div class="line"><span class="addition">+               &#125;</span></div><div class="line"><span class="addition">+        //fontScale = 1;</span></div><div class="line">         mcc = mnc = 0;</div><div class="line">         locale = null;</div><div class="line">         userSetLocale = false;</div></pre></td></tr></table></figure></section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+      </div>
+    
+    <!--
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    -->
+    
+      <!-- UY BEGIN -->
+      <!--
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+      -->
+      <!-- UY END -->
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  </article>
+</main>
 
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2017/07/14/set-default-font-size-large/';
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
 
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "设置默认字体为大号",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
 
 <script src="/js/script.js"></script>
-
-  </div>
-</body>
+  </body>
 </html>
