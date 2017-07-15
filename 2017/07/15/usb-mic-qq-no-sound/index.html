@@ -7,7 +7,7 @@
   <meta name="keyword" content="Android">
   <title>
     
-      categories | a_bin&#39;s blog
+      在使用USB麦克的时候，用QQ或者Skype视频通话无法录音 | a_bin&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -93,7 +93,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>categories</h2>
+  <h2>在使用USB麦克的时候，用QQ或者Skype视频通话无法录音</h2>
   <p class="post-date">2017-07-15</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -101,7 +101,24 @@
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"></section>
+    <section class="markdown-content"><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">diff --git a/services/audiopolicy/AudioPolicyManager.cpp b/services/audiopolicy/AudioPolicyManager.cpp</div><div class="line">index 6c1b13a..0931166 100755</div><div class="line"><span class="comment">--- a/services/audiopolicy/AudioPolicyManager.cpp</span></div><div class="line"><span class="addition">++ b/services/audiopolicy/AudioPolicyManager.cpp</span></div><div class="line">@ -5354,6 +5354,8 @ audio_devices_t AudioPolicyManager::getDeviceForInputSource(audio_source_t input</div><div class="line">default: // FORCE_NONE</div><div class="line">if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_WIRED_HEADSET) &#123;</div><div class="line">device = AUDIO_DEVICE_IN_WIRED_HEADSET;</div><div class="line">&#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET) &#123;</div><div class="line"><span class="addition">+ device = AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET;</span></div><div class="line">&#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_USB_DEVICE) &#123;</div><div class="line">device = AUDIO_DEVICE_IN_USB_DEVICE;</div><div class="line">&#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_BUILTIN_MIC) &#123;</div><div class="line">@ -5378,6 +5380,8 @ audio_devices_t AudioPolicyManager::getDeviceForInputSource(audio_source_t input</div><div class="line">device = AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET;</div><div class="line">&#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_WIRED_HEADSET) &#123;</div><div class="line">device = AUDIO_DEVICE_IN_WIRED_HEADSET;</div><div class="line"><span class="addition">+ &#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET) &#123;</span></div><div class="line"><span class="addition">+ device = AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET;</span></div><div class="line">&#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_USB_DEVICE) &#123;</div><div class="line">device = AUDIO_DEVICE_IN_USB_DEVICE;</div><div class="line">&#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_BUILTIN_MIC) &#123;</div><div class="line">@ -5387,6 +5391,8 @ audio_devices_t AudioPolicyManager::getDeviceForInputSource(audio_source_t input</div><div class="line">case AUDIO_SOURCE_CAMCORDER:</div><div class="line">if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_BACK_MIC) &#123;</div><div class="line">device = AUDIO_DEVICE_IN_BACK_MIC;</div><div class="line"><span class="addition">+ &#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_USB_DEVICE) &#123;</span></div><div class="line"><span class="addition">+ device = AUDIO_DEVICE_IN_USB_DEVICE;</span></div><div class="line">&#125; else if (availableDeviceTypes &amp; AUDIO_DEVICE_IN_BUILTIN_MIC) &#123;</div><div class="line">device = AUDIO_DEVICE_IN_BUILTIN_MIC;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>另外，3288的USB有个BUG，如果USB-HUB接在HOST2上的话，插入USB麦克风会有问题，但是如果HOST2不经过HUB直接插麦克风是没问题的，把HUB接到HOST1上再插入麦克风正常</p>
+</blockquote>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      </div>
     
     <!--
     <div class="money-like">
@@ -139,7 +156,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/categories/index-1.html';
+    var url = 'http://yoursite.com/2017/07/15/usb-mic-qq-no-sound/';
     $('#article-banner').geopattern(url)
     $('.header').removeClass('fixed-header')
 
@@ -183,7 +200,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig != "undefined") {
       var gitment = new Gitment({
-        id: "categories",
+        id: "在使用USB麦克的时候，用QQ或者Skype视频通话无法录音",
         owner: "undefined",
         repo: "undefined",
         oauth: {
