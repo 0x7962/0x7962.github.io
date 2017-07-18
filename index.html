@@ -96,6 +96,154 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2017/07/18/install-apk-file-need-password/">手动安装apk文件需要输入密码才能安装</a>
+      </h2>
+      <p class="article-date">2017年7月18日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          packages/apps/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java
+1234567891011121314151617181920212223242526272829303 ...
+        
+      </div>
+      <a class="more" href="/2017/07/18/install-apk-file-need-password/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/18/default-grant-usb-device-permission/">默认授予USB设备的操作权限</a>
+      </h2>
+      <p class="article-date">2017年7月18日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          
+可以根据包名来控制，默认只给指定的包名授权
+
+1234567891011121314151617181920212223242526272829303132333435363738diff --git a/services/usb/java/com/android/server/usb/U ...
+        
+      </div>
+      <a class="more" href="/2017/07/18/default-grant-usb-device-permission/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/18/inversion-matrix-bug/">颜色反转选项有BUG</a>
+      </h2>
+      <p class="article-date">2017年7月18日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          123456789101112131415diff --git a/services/accessibility/java/com/android/server/accessibility/DisplayAdjustmentUtils.java b/services/accessibilit ...
+        
+      </div>
+      <a class="more" href="/2017/07/18/inversion-matrix-bug/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/18/plugin-hdmi-no-sleep/">HDMI连接之后不休眠</a>
+      </h2>
+      <p class="article-date">2017年7月18日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          1234567891011diff --git a/services/core/java/com/android/server/power/PowerManagerService.java b/services/core/java/com/android/server/power/Power ...
+        
+      </div>
+      <a class="more" href="/2017/07/18/plugin-hdmi-no-sleep/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/18/disable-adb-install/">禁止adb安装apk</a>
+      </h2>
+      <p class="article-date">2017年7月18日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          
+可通过prop变量控制是否禁止，默认允许指定包名的apk安装frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java12345678910111213141516171819202 ...
+        
+      </div>
+      <a class="more" href="/2017/07/18/disable-adb-install/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/17/AS-use-jni-lib/">Android studio 添加jni的库</a>
+      </h2>
+      <p class="article-date">2017年7月17日</p>
+      
+        
+  <a href="/tags#Android app" >
+    <span class="tag-code">Android app</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          
+不编译jni代码，直接打包库文件
+
+/Project/app/build.gradle12345678android&#123;	...	sourceSets &#123;        main &#123;            jniLibs.srcDirs = ['libs']   ...
+        
+      </div>
+      <a class="more" href="/2017/07/17/AS-use-jni-lib/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2017/07/15/usb-mic-qq-no-sound/">在使用USB麦克的时候，用QQ或者Skype视频通话无法录音</a>
       </h2>
       <p class="article-date">2017年7月15日</p>
@@ -195,164 +343,6 @@
         
       </div>
       <a class="more" href="/2017/07/14/install-non-market-app/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/launcher-two-times/">launcher启动2次的BUG</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3188" >
-    <span class="tag-code">RK3188</span>
-  </a>
-
-  <a href="/tags#RK3066" >
-    <span class="tag-code">RK3066</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          
-修改作为Launcher的app的AndroidManifest.xml文件
-
-1android:configChanges="mcc|mnc|locale|touchscreen|keyboard|navigation|layoutDirection|orientation|screen ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/launcher-two-times/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/ethernet-no-internet/">以太网和wifi/4G同时使用</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          
-此方法可用于以太网连接特殊设备来通讯，Wi-Fi或者4G与外部网络连接
-
-1,当以太网连接时不注册到系统网络类型,并设置ip_prefix到prop里面
-
-注意，此处的prop开头不能是ro的，不然第二次设置的时候无法修改上一次的值
-
-123456789101112131415161718 ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/ethernet-no-internet/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/hdmi-scale-bug/">修改HDMI设置缩放之后无法保存的bug</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859diff --git a/src/com/android/settings ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/hdmi-scale-bug/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/force-rotation-0/">强制横屏显示</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          123456789101112131415diff --git a/services/core/java/com/android/server/wm/WindowManagerService.java b/services/core/java/com/android/server/wm/Wi ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/force-rotation-0/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/set-default-font-size-large/">设置默认字体为大号</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          12345678910111213141516171819diff --git a/core/java/android/content/res/Configuration.java b/core/java/android/content/res/Configuration.javaindex ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/set-default-font-size-large/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/default-time-zone-lang/">默认时区和语言设置为中国</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          123456789101112131415161718192021diff --git a/system.prop b/system.propindex bc09cd4..ac6f131 100644--- a/system.prop+++ b/system.prop@@ -36,7 +36 ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/default-time-zone-lang/">Read more</a>
     </article>
   
 
