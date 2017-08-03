@@ -96,6 +96,81 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2017/07/15/usb-mic-qq-no-sound/">在使用USB麦克的时候，用QQ或者Skype视频通话无法录音</a>
+      </h2>
+      <p class="article-date">2017年7月15日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          12345678910111213141516171819202122232425262728293031diff --git a/services/audiopolicy/AudioPolicyManager.cpp b/services/audiopolicy/AudioPolicyMa ...
+        
+      </div>
+      <a class="more" href="/2017/07/15/usb-mic-qq-no-sound/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/14/two-touch-screen/">双屏异显双触摸</a>
+      </h2>
+      <p class="article-date">2017年7月14日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          
+在使用Presentation异显的时候，可以2个触摸屏分开操作原理就是把一块屏设置成external
+
+12345678910111213141516171819202122232425262728293031diff --git a/services/inputflinger/Even ...
+        
+      </div>
+      <a class="more" href="/2017/07/14/two-touch-screen/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/14/disable-reboot-permission/">去掉系统的关机、重启的权限检查</a>
+      </h2>
+      <p class="article-date">2017年7月14日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          12345678910111213141516171819202122232425262728293031diff --git a/core/res/AndroidManifest.xml b/core/res/AndroidManifest.xmlindex ccdb5db..f0f8b6 ...
+        
+      </div>
+      <a class="more" href="/2017/07/14/disable-reboot-permission/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2017/07/14/install-non-market-app/">默认允许安装未知来源的app</a>
       </h2>
       <p class="article-date">2017年7月14日</p>
@@ -151,37 +226,6 @@
         
       </div>
       <a class="more" href="/2017/07/14/launcher-two-times/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/ethernet-no-internet/">以太网和wifi/4G同时使用</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          
-此方法可用于以太网连接特殊设备来通讯，Wi-Fi或者4G与外部网络连接
-
-1,当以太网连接时不注册到系统网络类型,并设置ip_prefix到prop里面
-
-注意，此处的prop开头不能是ro的，不然第二次设置的时候无法修改上一次的值
-
-123456789101112131415161718 ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/ethernet-no-internet/">Read more</a>
     </article>
   
     <article class="article-card">
@@ -302,60 +346,6 @@
         
       </div>
       <a class="more" href="/2017/07/14/open-app-in-launcher/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/ddr-gpu-cpu-freq/">添加DDR、GPU、CPU的频率显示到SYSTEMUI</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          
-需要驱动支持才行
-
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071di ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/ddr-gpu-cpu-freq/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/14/hdmi-and-laba-sound/">MID包HDMI和喇叭都有声音</a>
-      </h2>
-      <p class="article-date">2017年7月14日</p>
-      
-        
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          
-此修改是针对MID包的修改
-
-1234567891011121314151617diff --git a/services/core/java/com/android/server/WiredAccessoryManager.java b/services/core/java/com/an ...
-        
-      </div>
-      <a class="more" href="/2017/07/14/hdmi-and-laba-sound/">Read more</a>
     </article>
   
 
