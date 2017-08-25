@@ -96,6 +96,36 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2017/08/25/ZTE-ME3630-debug/">中兴ME3630模块调试</a>
+      </h2>
+      <p class="article-date">2017年8月25日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+  <a href="/tags#RK3288" >
+    <span class="tag-code">RK3288</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          
+换卡第一次开机会出现AT timeout
+模块厂商那边修改ril库，在timeout之后把模块复位掉
+
+
+重新复位之后可能出现IP获取正常，但是信号显示异常
+在开机的时候添加一个脚本，删除 /data/data/com.android.providers.telephony/ 文件加，副作 ...
+        
+      </div>
+      <a class="more" href="/2017/08/25/ZTE-ME3630-debug/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2017/08/03/repo-mirror-server/">搭建repo镜像服务器</a>
       </h2>
       <p class="article-date">2017年8月3日</p>
@@ -315,29 +345,6 @@ sudo adduser –system –shell /bin/bash –group gitsudo passwd git
         
       </div>
       <a class="more" href="/2017/07/18/disable-adb-install/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/17/AS-use-jni-lib/">Android studio 添加jni的库</a>
-      </h2>
-      <p class="article-date">2017年7月17日</p>
-      
-        
-  <a href="/tags#Android app" >
-    <span class="tag-code">Android app</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          
-不编译jni代码，直接打包库文件
-
-/Project/app/build.gradle12345678android&#123;	...	sourceSets &#123;        main &#123;            jniLibs.srcDirs = ['libs']   ...
-        
-      </div>
-      <a class="more" href="/2017/07/17/AS-use-jni-lib/">Read more</a>
     </article>
   
 
