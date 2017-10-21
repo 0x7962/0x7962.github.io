@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="a_bin&#39;s blog">
+  <meta name="keyword" content="Android">
+  <title>
+    
+      编译protobuf | a_bin&#39;s blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>a_bin's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>编译protobuf</h2>
+  <p class="post-date">2017-10-21</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="1-下载源代码，建议下载release包，里面包含一些编译工具"><a href="#1-下载源代码，建议下载release包，里面包含一些编译工具" class="headerlink" title="1, 下载源代码，建议下载release包，里面包含一些编译工具"></a>1, 下载源代码，建议下载<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">release</a>包，里面包含一些编译工具</h1><h1 id="2-解压编译"><a href="#2-解压编译" class="headerlink" title="2, 解压编译"></a>2, 解压编译</h1><h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置</h2><p><code>./configure --prefix=/home/android-build/test CXXFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; LIBS=&quot;$(pkg-config --libs protobuf-lite)&quot; CFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; --enable-static=no</code></p>
+<blockquote>
+<p>–prefix 指定生成的文件存放路径，–enable-static=no 这是不生产<code>.a</code>的静态库， 其他flags是生存体积更小的lite版本库</p>
+<h2 id="2-编译"><a href="#2-编译" class="headerlink" title="2. 编译"></a>2. 编译</h2><p>make -j4<br>make check //检查测试，时间比较久<br>make install //会在指定的路径生存bin、lib等等</p>
+<h2 id="3-配置环境变量"><a href="#3-配置环境变量" class="headerlink" title="3. 配置环境变量"></a>3. 配置环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:/home/android-build/test/bin/</div><div class="line">export LIBRARY_PATH=$LIBRARY_PATH:/home/android-build/test/lib/</div><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/android-build/test/lib/</div></pre></td></tr></table></figure>
+<p>上面路径就是刚才生成的路径，然后测试protoc –version</p>
+<h1 id="3-交叉编译其他平台的protoc，这里以mips为例"><a href="#3-交叉编译其他平台的protoc，这里以mips为例" class="headerlink" title="3, 交叉编译其他平台的protoc，这里以mips为例"></a>3, 交叉编译其他平台的protoc，这里以mips为例</h1><h2 id="1-设置编译链的环境变量"><a href="#1-设置编译链的环境变量" class="headerlink" title="1. 设置编译链的环境变量"></a>1. 设置编译链的环境变量</h2><p><code>export PATH=$PATH:/home/xxx/toolchains/mips-gcc472-glibc216/bin/</code></p>
+<h2 id="2-将上一次编译的全部清掉"><a href="#2-将上一次编译的全部清掉" class="headerlink" title="2. 将上一次编译的全部清掉"></a>2. 将上一次编译的全部清掉</h2><p><code>make distclean</code></p>
+<h2 id="3-重新配置编译选项"><a href="#3-重新配置编译选项" class="headerlink" title="3. 重新配置编译选项"></a>3. 重新配置编译选项</h2><p><code>./configure --prefix=/home/android-build/test --host=mips-linux-gnu --with-protoc=/home/android-build/test/bin/protoc CXXFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; LIBS=&quot;$(pkg-config --libs protobuf-lite)&quot; CFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; --enable-static=no</code><br>在之前的基础上添加了<code>--host</code>指定编译链和<code>--with-protoc</code>指定刚刚编译出来的protoc文件的路径，因为编译其他平台需要使用这个命令</p>
+<h2 id="4-编译"><a href="#4-编译" class="headerlink" title="4. 编译"></a>4. 编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make -j4</div><div class="line">make check</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>最后会在指定目录生成mips架构的文件了，如果现在执行protoc的话会提示找不到ld.so，可以使用<code>file your_path/protoc</code>来查看是否是mips架构的文件</p>
+</blockquote>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Compile" >
+    <span class="tag-code">Compile</span>
+  </a>
+
+      </div>
+    
+    <!--
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    -->
+    
+      <!-- UY BEGIN -->
+      <!--
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+      -->
+      <!-- UY END -->
+    
+
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2017/10/21/protobuf-compile/';
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "编译protobuf",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
