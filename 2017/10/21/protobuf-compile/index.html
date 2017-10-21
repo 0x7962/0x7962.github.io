@@ -101,16 +101,23 @@
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"><h1 id="1-下载源代码，建议下载release包，里面包含一些编译工具"><a href="#1-下载源代码，建议下载release包，里面包含一些编译工具" class="headerlink" title="1, 下载源代码，建议下载release包，里面包含一些编译工具"></a>1, 下载源代码，建议下载<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">release</a>包，里面包含一些编译工具</h1><h1 id="2-解压编译"><a href="#2-解压编译" class="headerlink" title="2, 解压编译"></a>2, 解压编译</h1><h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置</h2><p><code>./configure --prefix=/home/android-build/test CXXFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; LIBS=&quot;$(pkg-config --libs protobuf-lite)&quot; CFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; --enable-static=no</code></p>
+    <section class="markdown-content"><h1 id="1-下载源代码，建议下载release包，里面包含一些编译工具"><a href="#1-下载源代码，建议下载release包，里面包含一些编译工具" class="headerlink" title="1, 下载源代码，建议下载release包，里面包含一些编译工具"></a>1, 下载源代码，建议下载<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">release</a>包，里面包含一些编译工具</h1><h1 id="2-解压编译"><a href="#2-解压编译" class="headerlink" title="2, 解压编译"></a>2, 解压编译</h1><h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/home/android-build/test CXXFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; LIBS=&quot;$(pkg-config --libs protobuf-lite)&quot; CFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; --enable-static=no</div></pre></td></tr></table></figure>
 <blockquote>
 <p>–prefix 指定生成的文件存放路径，–enable-static=no 这是不生产<code>.a</code>的静态库， 其他flags是生存体积更小的lite版本库</p>
-<h2 id="2-编译"><a href="#2-编译" class="headerlink" title="2. 编译"></a>2. 编译</h2><p>make -j4<br>make check //检查测试，时间比较久<br>make install //会在指定的路径生存bin、lib等等</p>
+</blockquote>
+<h2 id="2-编译"><a href="#2-编译" class="headerlink" title="2. 编译"></a>2. 编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make -j4</div><div class="line">make check //检查测试，时间比较久</div><div class="line">make install //会在指定的路径生存bin、lib等等</div></pre></td></tr></table></figure>
 <h2 id="3-配置环境变量"><a href="#3-配置环境变量" class="headerlink" title="3. 配置环境变量"></a>3. 配置环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:/home/android-build/test/bin/</div><div class="line">export LIBRARY_PATH=$LIBRARY_PATH:/home/android-build/test/lib/</div><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/android-build/test/lib/</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面路径就是刚才生成的路径，然后测试protoc –version</p>
+</blockquote>
 <h1 id="3-交叉编译其他平台的protoc，这里以mips为例"><a href="#3-交叉编译其他平台的protoc，这里以mips为例" class="headerlink" title="3, 交叉编译其他平台的protoc，这里以mips为例"></a>3, 交叉编译其他平台的protoc，这里以mips为例</h1><h2 id="1-设置编译链的环境变量"><a href="#1-设置编译链的环境变量" class="headerlink" title="1. 设置编译链的环境变量"></a>1. 设置编译链的环境变量</h2><p><code>export PATH=$PATH:/home/xxx/toolchains/mips-gcc472-glibc216/bin/</code></p>
 <h2 id="2-将上一次编译的全部清掉"><a href="#2-将上一次编译的全部清掉" class="headerlink" title="2. 将上一次编译的全部清掉"></a>2. 将上一次编译的全部清掉</h2><p><code>make distclean</code></p>
-<h2 id="3-重新配置编译选项"><a href="#3-重新配置编译选项" class="headerlink" title="3. 重新配置编译选项"></a>3. 重新配置编译选项</h2><p><code>./configure --prefix=/home/android-build/test --host=mips-linux-gnu --with-protoc=/home/android-build/test/bin/protoc CXXFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; LIBS=&quot;$(pkg-config --libs protobuf-lite)&quot; CFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; --enable-static=no</code><br>在之前的基础上添加了<code>--host</code>指定编译链和<code>--with-protoc</code>指定刚刚编译出来的protoc文件的路径，因为编译其他平台需要使用这个命令</p>
+<h2 id="3-重新配置编译选项"><a href="#3-重新配置编译选项" class="headerlink" title="3. 重新配置编译选项"></a>3. 重新配置编译选项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/home/android-build/test --host=mips-linux-gnu --with-protoc=/home/android-build/test/bin/protoc CXXFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; LIBS=&quot;$(pkg-config --libs protobuf-lite)&quot; CFLAGS=&quot;$(pkg-config --cflags protobuf-lite)&quot; --enable-static=no</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在之前的基础上添加了<code>--host</code>指定编译链和<code>--with-protoc</code>指定刚刚编译出来的protoc文件的路径，因为编译其他平台需要使用这个命令</p>
+</blockquote>
 <h2 id="4-编译"><a href="#4-编译" class="headerlink" title="4. 编译"></a>4. 编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make -j4</div><div class="line">make check</div><div class="line">make install</div></pre></td></tr></table></figure>
+<blockquote>
 <p>最后会在指定目录生成mips架构的文件了，如果现在执行protoc的话会提示找不到ld.so，可以使用<code>file your_path/protoc</code>来查看是否是mips架构的文件</p>
 </blockquote>
 </section>
