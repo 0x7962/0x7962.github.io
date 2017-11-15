@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="a_bin&#39;s blog">
+  <meta name="keyword" content="Android">
+  <title>
+    
+      RK3288 BOX 版本同时输出USB和HDMi音频 | a_bin&#39;s blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>a_bin's blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>RK3288 BOX 版本同时输出USB和HDMi音频</h2>
+  <p class="post-date">2017-11-15</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>前景：Android默认插入USB音频设备之后会把其它路的音频关闭，只有USB有声音。</p>
+</blockquote>
+<h2 id="指修改这里的话frameworks-av，HDMI和USB都会有声音，但是声音会比较卡"><a href="#指修改这里的话frameworks-av，HDMI和USB都会有声音，但是声音会比较卡" class="headerlink" title="指修改这里的话frameworks/av，HDMI和USB都会有声音，但是声音会比较卡"></a>指修改这里的话<code>frameworks/av</code>，HDMI和USB都会有声音，但是声音会比较卡</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">diff --git a/services/audiopolicy/AudioPolicyManager.cpp b/services/audiopolicy/AudioPolicyManager.cpp</div><div class="line">index 41628f1..b47c988 100755</div><div class="line"><span class="comment">--- a/services/audiopolicy/AudioPolicyManager.cpp</span></div><div class="line"><span class="comment">+++ b/services/audiopolicy/AudioPolicyManager.cpp</span></div><div class="line">@@ -4404,7 +4404,6 @@ audio_devices_t AudioPolicyManager::getNewOutputDevice(audio_io_handle_t output,</div><div class="line">     &#125; else if (outputDesc-&gt;isStrategyActive(STRATEGY_REROUTING)) &#123;</div><div class="line">         device = getDeviceForStrategy(STRATEGY_REROUTING, fromCache);</div><div class="line">     &#125;</div><div class="line"><span class="deletion">-</span></div><div class="line">     ALOGV("getNewOutputDevice() selected device %x", device);</div><div class="line">     return device;</div><div class="line"> &#125;</div><div class="line">@@ -4901,6 +4900,11 @@ audio_devices_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strate</div><div class="line">             device &amp;= ~AUDIO_DEVICE_OUT_SPEAKER;</div><div class="line">         &#125;</div><div class="line"></div><div class="line"><span class="addition">+#ifdef BOX_STRATEGY</span></div><div class="line"><span class="addition">+        ALOGV("====a_bin===BOX_STRATEGY========");</span></div><div class="line"><span class="addition">+        device |= AUDIO_DEVICE_OUT_SPEAKER;</span></div><div class="line"><span class="addition">+#endif</span></div><div class="line"><span class="addition">+</span></div><div class="line">         if (device) break;</div><div class="line">         device = mDefaultOutputDevice-&gt;mDeviceType;</div><div class="line">         if (device == AUDIO_DEVICE_NONE) &#123;</div><div class="line">@@ -4912,7 +4916,7 @@ audio_devices_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strate</div><div class="line">         ALOGW("getDeviceForStrategy() unknown strategy: %d", strategy);</div><div class="line">         break;</div><div class="line">     &#125;</div><div class="line"><span class="deletion">-    ALOGVV("getDeviceForStrategy() strategy %d, device %x", strategy, device);</span></div><div class="line"><span class="addition">+    ALOGV("getDeviceForStrategy() strategy %d, device %x", strategy, device);</span></div><div class="line">     return device;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h2 id="还需要修改usb音频的参数hardware-libhardware"><a href="#还需要修改usb音频的参数hardware-libhardware" class="headerlink" title="还需要修改usb音频的参数hardware/libhardware"></a>还需要修改usb音频的参数<code>hardware/libhardware</code></h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">diff --git a/modules/usbaudio/alsa_device_profile.c b/modules/usbaudio/alsa_device_profile.c</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index 8e84471..9c7244f</div><div class="line"><span class="comment">--- a/modules/usbaudio/alsa_device_profile.c</span></div><div class="line"><span class="comment">+++ b/modules/usbaudio/alsa_device_profile.c</span></div><div class="line">@@ -56,7 +56,7 @@ extern int8_t const pcm_format_value_map[50];</div><div class="line"></div><div class="line"> /* sort these highest -&gt; lowest (to default to best quality) */</div><div class="line"> static const unsigned std_sample_rates[] =</div><div class="line"><span class="deletion">-    &#123;48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000&#125;;</span></div><div class="line"><span class="addition">+    &#123;44100, 48000, 32000, 24000, 22050, 16000, 12000, 11025, 8000&#125;;</span></div><div class="line"></div><div class="line"> static void profile_reset(alsa_device_profile* profile)</div><div class="line"> &#123;</div><div class="line">@@ -119,6 +119,7 @@ static unsigned int round_to_16_mult(unsigned int size)</div><div class="line"> unsigned profile_calc_min_period_size(alsa_device_profile* profile, unsigned sample_rate)</div><div class="line"> &#123;</div><div class="line">     ALOGV("profile_calc_min_period_size(%p, rate:%d)", profile, sample_rate);</div><div class="line"><span class="addition">+    return 2 * DEFAULT_PERIOD_SIZE;</span></div><div class="line">     if (profile == NULL) &#123;</div><div class="line">         return DEFAULT_PERIOD_SIZE;</div><div class="line">     &#125; else &#123;</div><div class="line">diff --git a/modules/usbaudio/alsa_device_proxy.c b/modules/usbaudio/alsa_device_proxy.c</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index 081c05b..0768929</div><div class="line"><span class="comment">--- a/modules/usbaudio/alsa_device_proxy.c</span></div><div class="line"><span class="comment">+++ b/modules/usbaudio/alsa_device_proxy.c</span></div><div class="line"><span class="meta">@@ -25,7 +25,7 @@</span></div><div class="line"> #include "logging.h"</div><div class="line"></div><div class="line"> #define DEFAULT_PERIOD_SIZE     1024</div><div class="line"><span class="deletion">-#define DEFAULT_PERIOD_COUNT    2</span></div><div class="line"><span class="addition">+#define DEFAULT_PERIOD_COUNT    4</span></div><div class="line"></div><div class="line"> void proxy_prepare(alsa_device_proxy * proxy, alsa_device_profile* profile,</div><div class="line">                    struct pcm_config * config)</div><div class="line">@@ -65,7 +65,7 @@ void proxy_prepare(alsa_device_proxy * proxy, alsa_device_profile* profile,</div><div class="line"> int proxy_open(alsa_device_proxy * proxy)</div><div class="line"> &#123;</div><div class="line">     alsa_device_profile* profile = proxy-&gt;profile;</div><div class="line"><span class="deletion">-    ALOGV("proxy_open(card:%d device:%d %s)", profile-&gt;card, profile-&gt;device,</span></div><div class="line"><span class="addition">+    ALOGD("proxy_open(card:%d device:%d %s)", profile-&gt;card, profile-&gt;device,</span></div><div class="line">           profile-&gt;direction == PCM_OUT ? "PCM_OUT" : "PCM_IN");</div><div class="line"></div><div class="line">     proxy-&gt;pcm = pcm_open(profile-&gt;card, profile-&gt;device, profile-&gt;direction, &amp;proxy-&gt;alsa_config);</div></pre></td></tr></table></figure>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+      </div>
+    
+    <!--
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    -->
+    
+      <!-- UY BEGIN -->
+      <!--
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+      -->
+      <!-- UY END -->
+    
+
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2017/11/15/rk3288-box-usb-hdmi-output-audio-same-time/';
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "RK3288 BOX 版本同时输出USB和HDMi音频",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
