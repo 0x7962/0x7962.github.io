@@ -96,6 +96,51 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2018/06/12/android-change-volume-def-to-STREAM-MUSIC/">Android 修改音量调节默认调节媒体音量</a>
+      </h2>
+      <p class="article-date">2018年6月12日</p>
+      
+        
+  <a href="/tags#Android" >
+    <span class="tag-code">Android</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          framework/base/media/java/android/media/AudioService.java
+123456789101112131415diff --git a/media/java/android/media/AudioService.java b/media/jav ...
+        
+      </div>
+      <a class="more" href="/2018/06/12/android-change-volume-def-to-STREAM-MUSIC/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/06/12/android-ota/">Android 编译OTA升级包及差异包</a>
+      </h2>
+      <p class="article-date">2018年6月12日</p>
+      
+        
+  <a href="/tags#android" >
+    <span class="tag-code">android</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          先把源码完整编译一遍
+make -j10
+编译OTA完整包make otapackage -j10
+生成固件，用于打包成工厂烧录镜像./mkimage.sh ota注意：工厂生产烧录必须使用带ota参数生成出来的镜像，不然会影响后面差异包升级。
+生成差异包OTA 差异包只有差异内容，包大小比 ...
+        
+      </div>
+      <a class="more" href="/2018/06/12/android-ota/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2017/11/15/rk3288-box-usb-hdmi-output-audio-same-time/">RK3288 BOX 版本同时输出USB和HDMi音频</a>
       </h2>
       <p class="article-date">2017年11月15日</p>
@@ -288,53 +333,6 @@ sudo adduser –system –shell /bin/bash –group gitsudo passwd git
       <a class="more" href="/2017/07/26/custom-auto-gen-serialno/">Read more</a>
     </article>
   
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/22/git-server/">搭建Android镜像服务器</a>
-      </h2>
-      <p class="article-date">2017年7月22日</p>
-      
-        
-  <a href="/tags#git" >
-    <span class="tag-code">git</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          1,创建git账户12sudo adduser --system --shell /bin/bash --group gitsudo passwd git
-2,下载gitolite源码1git clone https://github.com/sitaramc/gitolite.git
-3, ...
-        
-      </div>
-      <a class="more" href="/2017/07/22/git-server/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/18/install-apk-file-need-password/">手动安装apk文件需要输入密码才能安装</a>
-      </h2>
-      <p class="article-date">2017年7月18日</p>
-      
-        
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          packages/apps/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java
-1234567891011121314151617181920212223242526272829303 ...
-        
-      </div>
-      <a class="more" href="/2017/07/18/install-apk-file-need-password/">Read more</a>
-    </article>
-  
 
   
     <div class="guide-pager">
@@ -354,7 +352,7 @@ sudo adduser –system –shell /bin/bash –group gitsudo passwd git
 </div>
     <footer class="app-footer">
   <p class="copyright">
-    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
     <br>
     Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
   </p>

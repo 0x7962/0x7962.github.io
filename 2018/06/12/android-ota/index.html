@@ -7,7 +7,7 @@
   <meta name="keyword" content="Android">
   <title>
     
-      打开短信功能 | a_bin&#39;s blog
+      Android 编译OTA升级包及差异包 | a_bin&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -93,26 +93,43 @@
 </header>
 
     <div id="article-banner">
-  <h2>打开短信功能</h2>
-  <p class="post-date">2017-07-14</p>
+  <h2>Android 编译OTA升级包及差异包</h2>
+  <p class="post-date">2018-06-12</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"><p><code>device/rockchip/common/overlay/frameworks/base/core/res/res/values/config.xml</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bool</span> <span class="attr">name</span>=<span class="string">"config_sms_capable"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bool</span>&gt;</span></div></pre></td></tr></table></figure></p>
+    <section class="markdown-content"><h3 id="先把源码完整编译一遍"><a href="#先把源码完整编译一遍" class="headerlink" title="先把源码完整编译一遍"></a>先把源码完整编译一遍</h3><blockquote>
+<p>make -j10</p>
+<h3 id="编译OTA完整包"><a href="#编译OTA完整包" class="headerlink" title="编译OTA完整包"></a>编译OTA完整包</h3><p>make otapackage -j10</p>
+<h3 id="生成固件，用于打包成工厂烧录镜像"><a href="#生成固件，用于打包成工厂烧录镜像" class="headerlink" title="生成固件，用于打包成工厂烧录镜像"></a>生成固件，用于打包成工厂烧录镜像</h3><p>./mkimage.sh ota<br>注意：工厂生产烧录必须使用带ota参数生成出来的镜像，不然会影响后面差异包升级。</p>
+<h3 id="生成差异包"><a href="#生成差异包" class="headerlink" title="生成差异包"></a>生成差异包</h3><p>OTA 差异包只有差异内容，包大小比较小，主要用于OTA在线升级，也可T卡本地升级。OTA差异包制作需要特殊的编译进行手动制作。</p>
+<ol>
+<li>使用上面的步骤先生成V1版本<br>保存<code>out/target/product/rkxxxx/obj/PACKAGING/target_files_intermediates/rkxxx-target_files-eng.root.zip</code>为v1.zip</li>
+<li>修改代码，再使用上面步骤生成V2版本，保存到v2.zip</li>
+<li>生成差异包<br><code>./build/tools/releasetools/ota_from_target_files -v -i v1.zip -p out/host/linux-x86 -k build/target/product/security/testkey v2.zip ./v1-v2.zip</code><br>说明: 生成差异包命令格式: ota_from_target_files<br>   -v -i &lt;用于比较的前一个 target file&gt;<br>   -p <host主机编译环境><br>   -k &lt;打包密钥&gt;<br>   用于比较的后一个 target file 最后生成的 ota 差异包</host主机编译环境></li>
+</ol>
+</blockquote>
+<h3 id="最后注意版本号"><a href="#最后注意版本号" class="headerlink" title="最后注意版本号"></a>最后注意版本号</h3><blockquote>
+<p>OTA包的版本如果是1.0.1，那么<code>ro.product.version</code>要写成1.0.2，这样在升级完成之后，升级程序就不会重复提示有更新。</p>
+</blockquote>
+<p>=======================================================================</p>
+<h3 id="OTA服务器"><a href="#OTA服务器" class="headerlink" title="OTA服务器"></a>OTA服务器</h3><ol>
+<li>如果服务器上已经存在nginx，那么再部署tomcat OTA服务的话，是无法访问到tomcat的，需要在<code>/usr/local/nginx/conf/nginx.conf</code>里面添加如下配置:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">	...</div><div class="line"></div><div class="line">	location  ^~ /tomcat/ &#123;</div><div class="line">            proxy_pass http://127.0.0.1:2300/; #2300是tomcat的端口</div><div class="line">            proxy_redirect  off;</div><div class="line">            proxy_set_header  X-Real-IP $remote_addr;</div><div class="line">            proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>最后把<code>ro.product.ota.host</code>修改成<code>ip/tomcat</code>才能访问</p>
+</blockquote>
 </section>
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
+  <a href="/tags#android" >
+    <span class="tag-code">android</span>
   </a>
 
       </div>
@@ -153,7 +170,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2017/07/14/open-sms/';
+    var url = 'http://yoursite.com/2018/06/12/android-ota/';
     $('#article-banner').geopattern(url)
     $('.header').removeClass('fixed-header')
 
@@ -197,7 +214,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig != "undefined") {
       var gitment = new Gitment({
-        id: "打开短信功能",
+        id: "Android 编译OTA升级包及差异包",
         owner: "undefined",
         repo: "undefined",
         oauth: {
