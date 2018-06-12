@@ -131,9 +131,15 @@
         
           先把源码完整编译一遍
 make -j10
-编译OTA完整包make otapackage -j10
-生成固件，用于打包成工厂烧录镜像./mkimage.sh ota注意：工厂生产烧录必须使用带ota参数生成出来的镜像，不然会影响后面差异包升级。
-生成差异包OTA 差异包只有差异内容，包大小比 ...
+
+编译OTA完整包
+make otapackage -j10
+
+生成固件，用于打包成工厂烧录镜像
+./mkimage.sh ota注意：工厂生产烧录必须使用带ota参数生成出来的镜像，不然会影响后面差异包升级。
+
+生成差异包
+OTA 差异包只有差异内 ...
         
       </div>
       <a class="more" href="/2018/06/12/android-ota/">Read more</a>

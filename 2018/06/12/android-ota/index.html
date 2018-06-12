@@ -103,9 +103,15 @@
   <article class="post-article">
     <section class="markdown-content"><h3 id="先把源码完整编译一遍"><a href="#先把源码完整编译一遍" class="headerlink" title="先把源码完整编译一遍"></a>先把源码完整编译一遍</h3><blockquote>
 <p>make -j10</p>
-<h3 id="编译OTA完整包"><a href="#编译OTA完整包" class="headerlink" title="编译OTA完整包"></a>编译OTA完整包</h3><p>make otapackage -j10</p>
-<h3 id="生成固件，用于打包成工厂烧录镜像"><a href="#生成固件，用于打包成工厂烧录镜像" class="headerlink" title="生成固件，用于打包成工厂烧录镜像"></a>生成固件，用于打包成工厂烧录镜像</h3><p>./mkimage.sh ota<br>注意：工厂生产烧录必须使用带ota参数生成出来的镜像，不然会影响后面差异包升级。</p>
-<h3 id="生成差异包"><a href="#生成差异包" class="headerlink" title="生成差异包"></a>生成差异包</h3><p>OTA 差异包只有差异内容，包大小比较小，主要用于OTA在线升级，也可T卡本地升级。OTA差异包制作需要特殊的编译进行手动制作。</p>
+</blockquote>
+<h3 id="编译OTA完整包"><a href="#编译OTA完整包" class="headerlink" title="编译OTA完整包"></a>编译OTA完整包</h3><blockquote>
+<p>make otapackage -j10</p>
+</blockquote>
+<h3 id="生成固件，用于打包成工厂烧录镜像"><a href="#生成固件，用于打包成工厂烧录镜像" class="headerlink" title="生成固件，用于打包成工厂烧录镜像"></a>生成固件，用于打包成工厂烧录镜像</h3><blockquote>
+<p>./mkimage.sh ota<br>注意：工厂生产烧录必须使用带ota参数生成出来的镜像，不然会影响后面差异包升级。</p>
+</blockquote>
+<h3 id="生成差异包"><a href="#生成差异包" class="headerlink" title="生成差异包"></a>生成差异包</h3><blockquote>
+<p>OTA 差异包只有差异内容，包大小比较小，主要用于OTA在线升级，也可T卡本地升级。OTA差异包制作需要特殊的编译进行手动制作。</p>
 <ol>
 <li>使用上面的步骤先生成V1版本<br>保存<code>out/target/product/rkxxxx/obj/PACKAGING/target_files_intermediates/rkxxx-target_files-eng.root.zip</code>为v1.zip</li>
 <li>修改代码，再使用上面步骤生成V2版本，保存到v2.zip</li>
