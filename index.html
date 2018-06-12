@@ -96,13 +96,56 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2018/06/12/android-5-1-1-usb-bug/">Android 5.1.1 USB BUG</a>
+      </h2>
+      <p class="article-date">2018年6月12日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          在Android 5.1.1上插入USB时，会清掉之前插入USB设备的UsbConfiguration和UsbInterface，导致前面插的USB设备无法使用。
+做如下修改即可12345678910111213141516171819202122diff --git a/services/ ...
+        
+      </div>
+      <a class="more" href="/2018/06/12/android-5-1-1-usb-bug/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/06/12/android-disable-pm-install-permission/">Android 关闭 pm install 权限检查</a>
+      </h2>
+      <p class="article-date">2018年6月12日</p>
+      
+        
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          当需要在app里面执行pm install来安装apk时，去掉此权限检查。
+framework/base/services/core/java/com/android/server/pm/PackageManagerService.java
+12345678910111213@@ -8389 ...
+        
+      </div>
+      <a class="more" href="/2018/06/12/android-disable-pm-install-permission/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2018/06/12/android-change-volume-def-to-STREAM-MUSIC/">Android 修改音量调节默认调节媒体音量</a>
       </h2>
       <p class="article-date">2018年6月12日</p>
       
         
-  <a href="/tags#Android" >
-    <span class="tag-code">Android</span>
+  <a href="/tags#System" >
+    <span class="tag-code">System</span>
   </a>
 
       
@@ -122,8 +165,8 @@
       <p class="article-date">2018年6月12日</p>
       
         
-  <a href="/tags#android" >
-    <span class="tag-code">android</span>
+  <a href="/tags#Android" >
+    <span class="tag-code">Android</span>
   </a>
 
       
@@ -293,50 +336,6 @@ sudo adduser –system –shell /bin/bash –group gitsudo passwd git
         
       </div>
       <a class="more" href="/2017/08/03/repo-mirror-server/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/26/git-errors/">git 错误汇总</a>
-      </h2>
-      <p class="article-date">2017年7月26日</p>
-      
-        
-  <a href="/tags#git" >
-    <span class="tag-code">git</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          push失败123456789101112131415161718192021a_bin@ubuntu-server:~/test_repo/test/project1$ git push repo-server master:masterCounting objects: 5, done. ...
-        
-      </div>
-      <a class="more" href="/2017/07/26/git-errors/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017/07/26/custom-auto-gen-serialno/">自定义自动生产的序列号</a>
-      </h2>
-      <p class="article-date">2017年7月26日</p>
-      
-        
-  <a href="/tags#RK3288" >
-    <span class="tag-code">RK3288</span>
-  </a>
-
-  <a href="/tags#System" >
-    <span class="tag-code">System</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          在原本生产的序列号前面添加TYKY,修改长度为15个字节123456789101112131415161718192021222324diff --git a/drmservice/drmservice.c b/drmservice/drmservice.cindex 54f7722..3a ...
-        
-      </div>
-      <a class="more" href="/2017/07/26/custom-auto-gen-serialno/">Read more</a>
     </article>
   
 

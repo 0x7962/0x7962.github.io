@@ -7,7 +7,7 @@
   <meta name="keyword" content="Android">
   <title>
     
-      Android 修改音量调节默认调节媒体音量 | a_bin&#39;s blog
+      Android 5.1.1 USB BUG | a_bin&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -93,7 +93,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>Android 修改音量调节默认调节媒体音量</h2>
+  <h2>Android 5.1.1 USB BUG</h2>
   <p class="post-date">2018-06-12</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -101,9 +101,8 @@
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"><p><code>framework/base/media/java/android/media/AudioService.java</code></p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">diff --git a/media/java/android/media/AudioService.java b/media/java/android/media/AudioService.java</div><div class="line">index 4bcbd3c..2b85f79 100755</div><div class="line"><span class="comment">--- a/media/java/android/media/AudioService.java</span></div><div class="line"><span class="comment">+++ b/media/java/android/media/AudioService.java</span></div><div class="line">@@ -3327,8 +3327,8 @@ public class AudioService extends IAudioService.Stub &#123;</div><div class="line">                     return AudioSystem.STREAM_MUSIC;</div><div class="line">                 &#125; else &#123;</div><div class="line">                     if (DEBUG_VOL) Log.v(TAG,</div><div class="line"><span class="deletion">-                            "getActiveStreamType: using STREAM_NOTIFICATION as default");</span></div><div class="line"><span class="deletion">-                    return AudioSystem.STREAM_NOTIFICATION;</span></div><div class="line"><span class="addition">+                            "getActiveStreamType: using STREAM_MUSIC as default");</span></div><div class="line"><span class="addition">+                    return AudioSystem.STREAM_MUSIC;</span></div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">             break;</div></pre></td></tr></table></figure>
-</section>
+    <section class="markdown-content"><p>在Android 5.1.1上插入USB时，会清掉之前插入USB设备的UsbConfiguration和UsbInterface，导致前面插的USB设备无法使用。</p>
+<h3 id="做如下修改即可"><a href="#做如下修改即可" class="headerlink" title="做如下修改即可"></a>做如下修改即可</h3><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">diff --git a/services/usb/java/com/android/server/usb/UsbHostManager.java b/services/usb/java/com/android/server/usb/UsbHostManager.java</div><div class="line">old mode 100644</div><div class="line">new mode 100755</div><div class="line">index e769bda..682224c</div><div class="line"><span class="comment">--- a/services/usb/java/com/android/server/usb/UsbHostManager.java</span></div><div class="line"><span class="comment">+++ b/services/usb/java/com/android/server/usb/UsbHostManager.java</span></div><div class="line">@@ -160,7 +160,6 @@ public class UsbHostManager &#123;</div><div class="line">             mNewInterfaces = new ArrayList&lt;UsbInterface&gt;();</div><div class="line">             mNewEndpoints = new ArrayList&lt;UsbEndpoint&gt;();</div><div class="line">         &#125;</div><div class="line"><span class="deletion">-</span></div><div class="line">         return true;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">@@ -230,6 +229,8 @@ public class UsbHostManager &#123;</div><div class="line">             mNewConfigurations = null;</div><div class="line">             mNewInterfaces = null;</div><div class="line">             mNewEndpoints = null;</div><div class="line"><span class="addition">+            mNewConfiguration = null;</span></div><div class="line"><span class="addition">+            mNewInterface = null;</span></div><div class="line">         &#125;</div><div class="line">     &#125;</div></pre></td></tr></table></figure></section>
     
       <div class="tags">
         <span>Tags:</span>
@@ -150,7 +149,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2018/06/12/android-change-volume-def-to-STREAM-MUSIC/';
+    var url = 'http://yoursite.com/2018/06/12/android-5-1-1-usb-bug/';
     $('#article-banner').geopattern(url)
     $('.header').removeClass('fixed-header')
 
@@ -194,7 +193,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig != "undefined") {
       var gitment = new Gitment({
-        id: "Android 修改音量调节默认调节媒体音量",
+        id: "Android 5.1.1 USB BUG",
         owner: "undefined",
         repo: "undefined",
         oauth: {
